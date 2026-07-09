@@ -28,75 +28,107 @@
 
   .divisions{
     background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
-    padding:76px 24px 92px;
+    padding:88px 24px 100px;
     position:relative; overflow:hidden;
   }
-  .divisions-inner{ max-width:1180px; margin:0 auto; position:relative; z-index:2; }
-  .divisions-head{ text-align:center; margin-bottom:52px; }
+  .divisions-inner{ max-width:1280px; margin:0 auto; position:relative; z-index:2; }
+  .divisions-head{ text-align:center; margin-bottom:60px; }
   .divisions-head .eyebrow{
-    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
-    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7);
+    font-family:'League Spartan', sans-serif; font-size:12.5px; font-weight:700;
+    letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.7);
   }
   .divisions-head h2{
     color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400;
-    font-size:48px; margin-top:8px; letter-spacing:.02em;
+    font-size:76px; line-height:1; margin-top:12px; letter-spacing:.01em;
   }
   .divisions-head .subhead{
-    color:rgba(255,255,255,.78); font-size:15.5px; margin-top:10px; font-weight:500;
+    color:rgba(255,255,255,.8); font-size:17px; font-weight:500; margin-top:16px;
   }
+
+  /* ---- mobile-first: stacked full cards ---- */
   .division-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:22px; align-items:start;
+    display:flex; flex-direction:column; gap:14px;
   }
   .division-card{
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.3);
-    padding:28px 22px 26px;
-    display:flex; flex-direction:column; align-items:flex-start; gap:0;
-    transition:border-color .18s, background .2s, transform .22s;
-    position:relative;
+    padding:30px 26px 28px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    position:relative; overflow:hidden;
+    transition:background .25s, border-color .25s, transform .25s, flex .5s cubic-bezier(.4,0,.2,1);
+    min-height:180px;
   }
-  .division-card:nth-child(2){ margin-top:26px; }
-  .division-card:nth-child(4){ margin-top:26px; }
   .division-card:hover{
     background:rgba(255,255,255,.09);
-    border-color:rgba(255,255,255,.5);
-    transform:translateY(-6px);
+    border-color:rgba(255,255,255,.55);
+  }
+  .division-card .card-index{
+    position:absolute; top:26px; right:26px;
+    font-family:'Bebas Neue', sans-serif; font-size:15px; letter-spacing:.05em;
+    color:rgba(255,255,255,.35);
   }
   .division-card .age-tag{
-    display:inline-block;
-    border:1px solid rgba(255,255,255,.4); color:rgba(255,255,255,.92);
-    font-family:'League Spartan', sans-serif; font-weight:700; font-size:11.5px;
-    letter-spacing:.12em; text-transform:uppercase;
-    padding:5px 12px;
+    display:inline-block; align-self:flex-start;
+    border:1px solid rgba(255,255,255,.45); color:rgba(255,255,255,.95);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:12px;
+    letter-spacing:.14em; text-transform:uppercase;
+    padding:6px 14px;
   }
   .division-card .division-name{
-    font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:44px;
-    color:var(--white); letter-spacing:.02em; line-height:1; margin-top:16px;
-    text-transform:uppercase;
+    font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:52px;
+    color:var(--white); letter-spacing:.02em; line-height:1; margin-top:20px;
+    text-transform:uppercase; transition:font-size .4s ease;
   }
   .division-card .kicker{
-    font-size:13px; font-weight:500; color:rgba(255,255,255,.72); margin-top:8px; line-height:1.4;
+    font-size:14px; font-weight:500; color:rgba(255,255,255,.75); margin-top:8px; line-height:1.4;
     font-style:italic;
   }
+  .division-card .extra-info{
+    font-size:13.5px; font-weight:500; color:rgba(255,255,255,.82); line-height:1.55;
+    margin-top:16px; max-width:320px;
+  }
+  .division-card .card-foot{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin-top:24px; padding-top:16px; border-top:1px solid rgba(255,255,255,.22);
+  }
   .division-card .birth-range{
-    font-size:11.5px; font-weight:700; color:rgba(255,255,255,.68); margin-top:18px;
+    font-size:11.5px; font-weight:700; color:rgba(255,255,255,.7);
     letter-spacing:.05em; text-transform:uppercase; font-variant-numeric:tabular-nums;
-    padding-top:14px; border-top:1px solid rgba(255,255,255,.2);
-    width:100%;
   }
-  .division-card .arrow{
-    position:absolute; top:26px; right:22px;
-    width:18px; height:18px; opacity:.5; transition:transform .2s, opacity .2s;
-    color:var(--white);
+  .division-card .cta-label{
+    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--white);
+    display:flex; align-items:center; gap:6px; white-space:nowrap;
+    opacity:.85; transition:opacity .2s, transform .2s;
   }
-  .division-card:hover .arrow{ opacity:1; transform:translate(4px,-4px); }
+  .division-card:hover .cta-label{ opacity:1; transform:translateX(3px); }
+  .division-card .cta-label svg{ width:13px; height:13px; }
 
-  @media (max-width:900px){
-    .division-grid{ grid-template-columns:1fr 1fr; }
-    .division-card:nth-child(2), .division-card:nth-child(4){ margin-top:0; }
+  /* ---- desktop with real hover: expanding panel row ---- */
+  @media (min-width:900px) and (hover:hover) and (pointer:fine){
+    .division-grid{
+      flex-direction:row; align-items:stretch; gap:6px; min-height:520px;
+    }
+    .division-card{
+      flex:1 1 0%; min-height:0; padding:38px 30px 32px;
+    }
+    .division-grid:hover .division-card{ flex:0.72 1 0%; }
+    .division-grid .division-card:hover{ flex:2.35 1 0%; }
+    .division-card .division-name{ font-size:46px; }
+    .division-card:hover .division-name{ font-size:68px; }
+    .division-card .extra-info{
+      max-height:0; opacity:0; overflow:hidden; margin-top:0;
+      transition:max-height .4s ease, opacity .3s ease, margin-top .4s ease;
+    }
+    .division-card:hover .extra-info{
+      max-height:120px; opacity:1; margin-top:16px;
+    }
+    .division-grid:hover .division-card:not(:hover){ opacity:.62; }
+    .division-card{ transition:background .25s, border-color .25s, opacity .3s, flex .5s cubic-bezier(.4,0,.2,1); }
   }
+
   @media (max-width:560px){
-    .division-grid{ grid-template-columns:1fr; }
+    .divisions-head h2{ font-size:46px; }
     .divisions{ background:linear-gradient(165deg, var(--purple-950) 0%, var(--purple-950) 62%, var(--purple-700) 62%, var(--purple-700) 100%); }
   }
 
@@ -109,38 +141,58 @@
   <div class="divisions-inner">
     <div class="divisions-head">
       <span class="eyebrow">CYA Recreational Soccer</span>
-      <h2>Find Your Age Group</h2>
-      <p class="subhead">Every player starts somewhere. Here's where yours begins.</p>
+      <h2>Where Do You Play?</h2>
+      <p class="subhead">From first touches to full pitch &mdash; there&rsquo;s a spot for every player.</p>
     </div>
     <div class="division-grid">
       <a class="division-card" href="https://www.cyasoccer.org/u4-u6bantams">
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        <span class="card-index">01</span>
         <span class="age-tag">U4&ndash;U6</span>
         <span class="division-name">Bantams</span>
         <span class="kicker">First touches, first friends.</span>
-        <span class="birth-range">Born Aug 1, 2020 &ndash; Jul 31, 2023</span>
+        <p class="extra-info">Coed play for U4&ndash;U5, separate boys&rsquo; and girls&rsquo; groups at U6. Saturday mornings at Sully Highlands.</p>
+        <div class="card-foot">
+          <span class="birth-range">Born Aug 1, 2020 &ndash; Jul 31, 2023</span>
+          <span class="cta-label">View Division <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></span>
+        </div>
       </a>
+      
       <a class="division-card" href="https://www.cyasoccer.org/u7-u8academy">
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        <span class="card-index">02</span>
         <span class="age-tag">U7&ndash;U8</span>
         <span class="division-name">Academy</span>
         <span class="kicker">Where skills start to click.</span>
-        <span class="birth-range">Born Aug 1, 2018 &ndash; Jul 31, 2020</span>
+        <p class="extra-info">Skill-building play for U7&ndash;U8 with weekly academy training on top of team practice.</p>
+        <div class="card-foot">
+          <span class="birth-range">Born Aug 1, 2018 &ndash; Jul 31, 2020</span>
+          <span class="cta-label">View Division <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></span>
+        </div>
       </a>
+      
       <a class="division-card" href="https://www.cyasoccer.org/u9-u12juniors">
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        <span class="card-index">03</span>
         <span class="age-tag">U9&ndash;U12</span>
         <span class="division-name">Juniors</span>
         <span class="kicker">Real games, real teammates.</span>
-        <span class="birth-range">Born Aug 1, 2014 &ndash; Jul 31, 2018</span>
+        <p class="extra-info">U11&ndash;U12 step into NCSL Recreational play, with two practices a week building toward Saturday games.</p>
+        <div class="card-foot">
+          <span class="birth-range">Born Aug 1, 2014 &ndash; Jul 31, 2018</span>
+          <span class="cta-label">View Division <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></span>
+        </div>
       </a>
+      
       <a class="division-card" href="https://www.cyasoccer.org/u13-u19seniors">
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        <span class="card-index">04</span>
         <span class="age-tag">U13&ndash;U19</span>
         <span class="division-name">Seniors</span>
         <span class="kicker">Full pitch. Full effort.</span>
-        <span class="birth-range">Born Aug 1, 2007 &ndash; Jul 31, 2014</span>
+        <p class="extra-info">Full 11v11 regulation soccer for U13&ndash;U19, competing in the NCSL Recreational league.</p>
+        <div class="card-foot">
+          <span class="birth-range">Born Aug 1, 2007 &ndash; Jul 31, 2014</span>
+          <span class="cta-label">View Division <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></span>
+        </div>
       </a>
+      
     </div>
   </div>
 </section>
