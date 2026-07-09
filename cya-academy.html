@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --purple-950:#1B0F38;
+    --purple-800:#2E1B5C;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+
+  .topbar{
+    background:var(--purple-950); padding:18px 24px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .topbar .wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .topbar a{
+    color:rgba(255,255,255,.85); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:6px;
+    transition:color .15s;
+  }
+  .topbar a:hover{ color:var(--white); }
+  .topbar svg{ width:14px; height:14px; }
+
+  .hero{
+    position:relative;
+    background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
+    padding:88px 24px 68px; text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7);
+  }
+
+  .age-tag{
+    display:inline-block; margin-top:22px;
+    border:1px solid rgba(255,255,255,.4); color:rgba(255,255,255,.92);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:.14em; text-transform:uppercase;
+    padding:7px 18px;
+  }
+
+  .division-title{
+    color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:84px; line-height:1; letter-spacing:.02em; text-transform:uppercase;
+    margin-top:16px;
+  }
+
+  .birth-line{
+    margin-top:14px; font-size:13px; font-weight:700; color:rgba(255,255,255,.72);
+    letter-spacing:.05em; text-transform:uppercase;
+  }
+
+  .meta-row{
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+    gap:0; margin:34px auto 0; max-width:780px;
+  }
+  .meta-row .meta-item{
+    color:rgba(255,255,255,.9); font-size:12.5px; font-weight:700;
+    letter-spacing:.04em; text-transform:uppercase;
+    padding:4px 18px; position:relative;
+  }
+  .meta-row .meta-item:not(:last-child)::after{
+    content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
+    width:1px; height:11px; background:rgba(255,255,255,.28);
+  }
+  .meta-row .meta-item:first-child{ padding-left:0; }
+
+  .hero-footnote{
+    margin-top:18px; font-size:12px; font-weight:500; color:rgba(255,255,255,.5); font-style:italic;
+  }
+
+  .content{ max-width:920px; margin:0 auto; padding:60px 24px 20px; }
+  .content h2{
+    color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:32px; letter-spacing:.02em; margin-bottom:6px;
+  }
+  .section-block{ margin-bottom:52px; }
+  .section-sub{ color:#6b5b7a; font-size:14px; font-weight:500; margin-bottom:24px; }
+
+  table.age-table{ width:100%; border-collapse:collapse; }
+  table.age-table th{
+    text-align:left; font-family:'League Spartan', sans-serif; font-size:11.5px; font-weight:800;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--purple-500);
+    padding:10px 14px; border-bottom:2px solid var(--purple-700);
+  }
+  table.age-table td{
+    padding:13px 14px; border-bottom:1px solid #E5DCEC; font-size:14.5px; font-weight:500;
+  }
+  table.age-table td.age-cell{ font-family:'Bebas Neue', sans-serif; font-weight:400; color:var(--purple-700); font-size:22px; width:80px; letter-spacing:.02em; }
+
+  .detail-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    border-top:1px solid #E5DCEC;
+  }
+  .detail-item{
+    padding:18px 4px; border-bottom:1px solid #E5DCEC;
+  }
+  .detail-item:nth-child(odd){ padding-right:24px; border-right:1px solid #E5DCEC; }
+  .detail-item .label{
+    display:block; font-family:'League Spartan', sans-serif; font-size:11px; font-weight:800;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--purple-500); margin-bottom:5px;
+  }
+  .detail-item .value{ font-size:15px; color:var(--ink-900); font-weight:600; }
+  .detail-item .value.tbd{ color:#A5809E; font-style:italic; font-weight:500; }
+
+  .format-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; }
+  .format-card{
+    background:var(--cream-50); border:1px solid #E5DCEC; border-top:3px solid var(--purple-700);
+    padding:20px;
+  }
+  .format-card .fmt-age{ font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:26px; color:var(--purple-700); letter-spacing:.02em; }
+  .format-card .fmt-style{ font-size:14px; font-weight:600; color:var(--ink-900); margin-top:6px; }
+
+  .note-flag{
+    background:#FBF3E4; border:1px solid #E9D6A6; border-radius:6px;
+    padding:14px 16px; font-size:13.5px; color:#6B5518; margin-top:18px; line-height:1.5;
+  }
+  .note-flag b{ color:#4A3A0F; }
+
+  .cta-block{
+    background:var(--purple-950); margin:0; padding:52px 24px; text-align:center;
+  }
+  .cta-block .wrap{ max-width:600px; margin:0 auto; }
+  .cta-block h3{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:34px; letter-spacing:.02em; margin-bottom:10px; }
+  .cta-block p{ color:rgba(255,255,255,.82); font-size:14.5px; font-weight:500; margin-bottom:22px; }
+  .cta-btn{
+    display:inline-block; background:var(--white); color:var(--purple-950);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px;
+    letter-spacing:.03em; text-transform:uppercase; padding:14px 30px; border-radius:4px;
+    transition:opacity .15s;
+  }
+  .cta-btn:hover{ opacity:.85; }
+
+  @media (max-width:640px){
+    .division-title{ font-size:48px; }
+    .hero{ background:linear-gradient(165deg, var(--purple-950) 0%, var(--purple-950) 62%, var(--purple-700) 62%, var(--purple-700) 100%); }
+    .detail-grid{ grid-template-columns:1fr; }
+    .detail-item:nth-child(odd){ border-right:none; padding-right:4px; }
+  }
+
+
+</style>
+</head>
+<body>
+
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="cya-divisions-section.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      All Divisions
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">CYA Recreational Soccer</span>
+  <div class="age-tag">U7&ndash;U8</div>
+  <h1 class="division-title">Academy</h1>
+  <p class="birth-line">For players born Aug 2018 &ndash; Jul 2020</p>
+  <div class="meta-row">
+    <span class="meta-item">Boys &amp; Girls</span>
+<span class="meta-item">Games Begin: September 13, 2026</span>
+<span class="meta-item">7&ndash;8 Weeks &middot; Saturdays</span>
+<span class="meta-item">Location: Sully Highlands Park</span>
+<span class="meta-item">Cost: $185 (Spring 2026 rate)</span>
+  </div>
+  <p class="hero-footnote">Academy training days/times and cost are Spring 2026 figures &mdash; confirm for Fall</p>
+</section>
+
+<div class="content">
+  <div class="section-block">
+    <h2>Age Groups</h2>
+    <p class="section-sub">Based on the 2026&ndash;27 age band cycle (Aug 1 &ndash; Jul 31).</p>
+    <table class="age-table">
+      <tr><th>Age</th><th>Born On or After</th><th>Born On or Before</th></tr>
+      <tr><td class="age-cell">U7</td><td>Aug 1, 2019</td><td>Jul 31, 2020</td></tr>
+<tr><td class="age-cell">U8</td><td>Aug 1, 2018</td><td>Jul 31, 2019</td></tr>
+
+    </table>
+  </div>
+
+  <div class="section-block">
+    <h2>Program Details</h2>
+    <p class="section-sub">Structural details are current. Season-specific dates marked TBD are not yet published for Fall 2026 &mdash; confirm before sharing with families.</p>
+    <div class="detail-grid">
+      <div class="detail-item"><span class="label">Group Breakdown</span><span class="value">U7 &amp; U8, Boys &amp; Girls</span></div>
+<div class="detail-item"><span class="label">Season Length</span><span class="value">7&ndash;8 weeks</span></div>
+<div class="detail-item"><span class="label">Games Begin</span><span class="value">September 13, 2026</span></div>
+<div class="detail-item"><span class="label">Academy Training</span><span class="value tbd">1x/week, plus 1 team practice/week (Spring 2026 sample: Girls U7 Wed 5&ndash;6pm, Girls U8 Wed 6&ndash;7pm, Boys U7 Fri 5&ndash;6pm, Boys U8 Fri 6&ndash;7pm &mdash; confirm for Fall)</span></div>
+<div class="detail-item"><span class="label">Location</span><span class="value">Sully Highlands Park, 13808 Wall Road, Herndon, VA 20171 (turf fields)</span></div>
+<div class="detail-item"><span class="label">Cost</span><span class="value tbd">$185 (Spring 2026 rate &mdash; confirm for Fall)</span></div>
+<div class="detail-item"><span class="label">Coaching</span><span class="value">Parent volunteers, guided by CYA staff coaches</span></div>
+<div class="detail-item"><span class="label">Uniform</span><span class="value">One purple and one white jersey included in registration</span></div>
+
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Game Format</h2>
+    <div class="format-grid">
+      <div class="format-card"><div class="fmt-age">U7</div><div class="fmt-style">3v3, Practice &amp; Play format</div></div>
+<div class="format-card"><div class="fmt-age">U8</div><div class="fmt-style">4v4, Modified Play format</div></div>
+
+    </div>
+    
+  </div>
+</div>
+
+<div class="cta-block">
+  <div class="wrap">
+    <h3>Ready to register?</h3>
+    <p>Registration questions go to registrar@chantillyyouth.org, or call 703-376-8337.</p>
+    <a class="cta-btn" href="#">Register Now</a>
+  </div>
+</div>
+
+</body>
+</html>
