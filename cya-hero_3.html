@@ -141,16 +141,25 @@
 
   /* ================= RESPONSIVE ================= */
   @media (max-width:960px){
-    .hero-wrap{ flex-direction:column; text-align:center; gap:32px; }
+    .hero-wrap{ flex-direction:column; text-align:center; gap:28px; }
     .hero-logos{ justify-content:center; }
     .hero-copy .sub{ margin-left:auto; margin-right:auto; }
     .hero-ctas{ justify-content:center; }
   }
   @media (max-width:640px){
-    .hero-copy h1{ font-size:64px; }
-    .hero-logos img{ height:150px; }
-    .hero-logos .divider{ height:110px; }
+    .hero{ padding:44px 20px 52px; }
+    .hero-copy h1{ font-size:56px; }
+    .hero-logos{ flex-direction:column; gap:16px; }
+    .hero-logos img{ height:120px; }
+    .hero-logos .divider{ width:110px; height:1px; }
     .hero{ background:linear-gradient(160deg, var(--purple-950) 0%, var(--purple-950) 60%, var(--purple-700) 60%, var(--purple-700) 100%); }
+    .community{ padding:44px 20px; }
+    .sponsors{ padding:40px 20px; }
+    .sponsors .eyebrow{ margin-bottom:18px; }
+    .sponsor-row{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px;
+    }
+    .sponsor-slot{ max-width:none; height:64px; padding:10px 14px; }
   }
 </style>
 </head>
@@ -173,7 +182,7 @@
       <h1>Play With Purpose</h1>
       <p class="sub">Chantilly&rsquo;s home for youth recreational soccer, ages 4 to 19. <b>Teams do fill up and waitlist most seasons</b>, register now to lock in your child&rsquo;s spot before they close.</p>
       <div class="hero-ctas">
-        <a class="btn-primary" href="#">
+        <a class="btn-primary" href="https://chantillyyouth.ottosport.ai/_registration">
           Register For Fall Soccer
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
         </a>
@@ -190,7 +199,7 @@
     <span class="eyebrow">Why Recreational Soccer</span>
     <h2>Coached By Your Community</h2>
     <p>Every CYA team is led by a volunteer, a parent, a neighbor, someone who shows up week after week because they care about the kids on the field, not a paycheck. That's what keeps this game affordable and close to home instead of priced out and reserved for a few. Recreational soccer built by the community, for the community, is worth showing up for. Fall registration is open, and there's a spot on a team for your kid right now.</p>
-    <a class="btn-primary" href="#">
+    <a class="btn-primary" href="https://chantillyyouth.ottosport.ai/_registration">
       Register For Fall Soccer
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
     </a>
