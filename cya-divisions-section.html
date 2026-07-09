@@ -66,6 +66,7 @@
     display:flex; align-items:center; justify-content:space-between;
   }
   .division-card .card-index{
+    display:none;
     font-family:'Bebas Neue', sans-serif; font-size:14px; letter-spacing:.05em;
     color:rgba(255,255,255,.4);
   }
@@ -82,18 +83,21 @@
     text-transform:uppercase; transition:font-size .4s ease;
   }
   .division-card .kicker{
+    display:none;
     font-size:12.5px; font-weight:500; color:rgba(255,255,255,.8); margin-top:7px; line-height:1.35;
     font-style:italic;
   }
   .division-card .extra-info{
+    display:none;
     font-size:12.5px; font-weight:500; color:rgba(255,255,255,.82); line-height:1.5;
     margin-top:12px; max-width:340px;
   }
   .division-card .stat-grid{
     display:flex; flex-wrap:wrap; gap:12px;
-    margin-top:14px;
+    margin-top:16px;
   }
   .division-card .stat{ min-width:90px; }
+  .division-card .stat:nth-child(2){ display:none; }
   .division-card .stat .stat-label{
     display:block; font-family:'League Spartan', sans-serif; font-size:9.5px; font-weight:700;
     letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:3px;
@@ -130,17 +134,18 @@
     .division-card{
       flex:1 1 0%; padding:36px 30px 30px;
     }
-    .division-card .card-index{ font-size:16px; }
+    .division-card .card-index{ display:block; font-size:16px; }
     .division-card .age-tag{ font-size:15px; letter-spacing:.08em; padding:7px 16px; }
     .division-card .division-name{ font-size:46px; margin-top:22px; }
-    .division-card .kicker{ font-size:14.5px; margin-top:9px; }
-    .division-card .extra-info{ font-size:14px; margin-top:18px; }
+    .division-card .kicker{ display:block; font-size:14.5px; margin-top:9px; }
+    .division-card .extra-info{ display:block; font-size:14px; margin-top:18px; }
     .division-card .stat-grid{ gap:24px; margin-top:22px; }
     .division-card .stat{ min-width:120px; }
+    .division-card .stat:nth-child(2){ display:block; }
     .division-card .stat .stat-label{ font-size:10.5px; margin-bottom:4px; }
     .division-card .stat .stat-value{ font-size:14.5px; }
     .division-card .card-foot{ padding-top:24px; }
-    .division-card .birth-range{ font-size:11px; letter-spacing:.05em; margin-bottom:14px; }
+    .division-card .birth-range{ display:block; font-size:11px; letter-spacing:.05em; margin-bottom:14px; }
     .division-card .cta-btn{ font-size:14px; letter-spacing:.06em; padding:15px 20px; }
     .division-card .cta-btn svg{ width:15px; height:15px; }
     .division-grid:hover .division-card{ flex:0.86 1 0%; }
