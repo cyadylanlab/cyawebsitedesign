@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — Divisions Section (embed only, no footer)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --purple-950:#1B0F38;
+    --purple-800:#2E1B5C;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+
+  .divisions{
+    background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
+    padding:76px 24px 92px;
+    position:relative; overflow:hidden;
+  }
+  .divisions-inner{ max-width:1180px; margin:0 auto; position:relative; z-index:2; }
+  .divisions-head{ text-align:center; margin-bottom:52px; }
+  .divisions-head .eyebrow{
+    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7);
+  }
+  .divisions-head h2{
+    color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:48px; margin-top:8px; letter-spacing:.02em;
+  }
+  .divisions-head .subhead{
+    color:rgba(255,255,255,.78); font-size:15.5px; margin-top:10px; font-weight:500;
+  }
+  .division-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px; align-items:start;
+  }
+  .division-card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.3);
+    padding:28px 22px 26px;
+    display:flex; flex-direction:column; align-items:flex-start; gap:0;
+    transition:border-color .18s, background .2s, transform .22s;
+    position:relative;
+  }
+  .division-card:nth-child(2){ margin-top:26px; }
+  .division-card:nth-child(4){ margin-top:26px; }
+  .division-card:hover{
+    background:rgba(255,255,255,.09);
+    border-color:rgba(255,255,255,.5);
+    transform:translateY(-6px);
+  }
+  .division-card .age-tag{
+    display:inline-block;
+    border:1px solid rgba(255,255,255,.4); color:rgba(255,255,255,.92);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:11.5px;
+    letter-spacing:.12em; text-transform:uppercase;
+    padding:5px 12px;
+  }
+  .division-card .division-name{
+    font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:44px;
+    color:var(--white); letter-spacing:.02em; line-height:1; margin-top:16px;
+    text-transform:uppercase;
+  }
+  .division-card .kicker{
+    font-size:13px; font-weight:500; color:rgba(255,255,255,.72); margin-top:8px; line-height:1.4;
+    font-style:italic;
+  }
+  .division-card .birth-range{
+    font-size:11.5px; font-weight:700; color:rgba(255,255,255,.68); margin-top:18px;
+    letter-spacing:.05em; text-transform:uppercase; font-variant-numeric:tabular-nums;
+    padding-top:14px; border-top:1px solid rgba(255,255,255,.2);
+    width:100%;
+  }
+  .division-card .arrow{
+    position:absolute; top:26px; right:22px;
+    width:18px; height:18px; opacity:.5; transition:transform .2s, opacity .2s;
+    color:var(--white);
+  }
+  .division-card:hover .arrow{ opacity:1; transform:translate(4px,-4px); }
+
+  @media (max-width:900px){
+    .division-grid{ grid-template-columns:1fr 1fr; }
+    .division-card:nth-child(2), .division-card:nth-child(4){ margin-top:0; }
+  }
+  @media (max-width:560px){
+    .division-grid{ grid-template-columns:1fr; }
+    .divisions{ background:linear-gradient(165deg, var(--purple-950) 0%, var(--purple-950) 62%, var(--purple-700) 62%, var(--purple-700) 100%); }
+  }
+
+
+</style>
+</head>
+<body>
+
+<section class="divisions">
+  <div class="divisions-inner">
+    <div class="divisions-head">
+      <span class="eyebrow">CYA Recreational Soccer</span>
+      <h2>Find Your Age Group</h2>
+      <p class="subhead">Every player starts somewhere. Here's where yours begins.</p>
+    </div>
+    <div class="division-grid">
+      <a class="division-card" href="https://www.cyasoccer.org/u4-u6bantams">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        <span class="age-tag">U4&ndash;U6</span>
+        <span class="division-name">Bantams</span>
+        <span class="kicker">First touches, first friends.</span>
+        <span class="birth-range">Born Aug 1, 2020 &ndash; Jul 31, 2023</span>
+      </a>
+      <a class="division-card" href="https://www.cyasoccer.org/u7-u8academy">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        <span class="age-tag">U7&ndash;U8</span>
+        <span class="division-name">Academy</span>
+        <span class="kicker">Where skills start to click.</span>
+        <span class="birth-range">Born Aug 1, 2018 &ndash; Jul 31, 2020</span>
+      </a>
+      <a class="division-card" href="https://www.cyasoccer.org/u9-u12juniors">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        <span class="age-tag">U9&ndash;U12</span>
+        <span class="division-name">Juniors</span>
+        <span class="kicker">Real games, real teammates.</span>
+        <span class="birth-range">Born Aug 1, 2014 &ndash; Jul 31, 2018</span>
+      </a>
+      <a class="division-card" href="https://www.cyasoccer.org/u13-u19seniors">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        <span class="age-tag">U13&ndash;U19</span>
+        <span class="division-name">Seniors</span>
+        <span class="kicker">Full pitch. Full effort.</span>
+        <span class="birth-range">Born Aug 1, 2007 &ndash; Jul 31, 2014</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
