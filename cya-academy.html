@@ -153,7 +153,11 @@
     .age-tag{ margin-top:14px; }
     .division-title{ font-size:48px; margin-top:12px; }
     .birth-line{ margin-top:10px; }
-    .meta-row{ margin-top:22px; }
+    .meta-row{
+      margin-top:22px; flex-direction:column; align-items:center; gap:10px;
+    }
+    .meta-row .meta-item{ padding:0; }
+    .meta-row .meta-item::after{ display:none; }
     .hero{ background:linear-gradient(165deg, var(--purple-950) 0%, var(--purple-950) 62%, var(--purple-700) 62%, var(--purple-700) 100%); }
     .content{ padding:44px 20px 20px; }
     .section-block{ margin-bottom:38px; }
@@ -186,9 +190,9 @@
 <span class="meta-item">Games Begin: September 13, 2026</span>
 <span class="meta-item">7&ndash;8 Weeks &middot; Saturdays</span>
 <span class="meta-item">Location: Sully Highlands Park</span>
-<span class="meta-item">Cost: $185 (Spring 2026 rate)</span>
+<span class="meta-item">Cost: $185 (Fall 2026 rate)</span>
   </div>
-  <p class="hero-footnote">Academy training days/times and cost are Spring 2026 figures &mdash; confirm for Fall</p>
+  <p class="hero-footnote">Academy training days/times shown are Spring 2026 figures &mdash; confirm for Fall</p>
 </section>
 
 <div class="content">
@@ -212,7 +216,7 @@
 <div class="detail-item"><span class="label">Games Begin</span><span class="value">September 13, 2026</span></div>
 <div class="detail-item"><span class="label">Academy Training</span><span class="value tbd">1x/week, plus 1 team practice/week (Spring 2026 sample: Girls U7 Wed 5&ndash;6pm, Girls U8 Wed 6&ndash;7pm, Boys U7 Fri 5&ndash;6pm, Boys U8 Fri 6&ndash;7pm &mdash; confirm for Fall)</span></div>
 <div class="detail-item"><span class="label">Location</span><span class="value">Sully Highlands Park, 13808 Wall Road, Herndon, VA 20171 (turf fields)</span></div>
-<div class="detail-item"><span class="label">Cost</span><span class="value tbd">$185 (Spring 2026 rate &mdash; confirm for Fall)</span></div>
+<div class="detail-item"><span class="label">Cost</span><span class="value">$185 (Fall 2026 rate)</span></div>
 <div class="detail-item"><span class="label">Coaching</span><span class="value">Parent volunteers, guided by CYA staff coaches</span></div>
 <div class="detail-item"><span class="label">Uniform</span><span class="value">One purple and one white jersey included in registration</span></div>
 
