@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — Field Locations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-950:#1B0F38;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:var(--purple-700); text-decoration:none;}
+  ul{list-style:none;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+  .topbar{
+    background:var(--purple-950); padding:18px 24px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .topbar .wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .topbar a{
+    color:rgba(255,255,255,.85); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:6px;
+    transition:color .15s; padding:9px 4px; text-decoration:none;
+  }
+  .topbar a:hover{ color:var(--white); text-decoration:none; }
+  .topbar svg{ width:14px; height:14px; }
+
+  .hero{
+    position:relative;
+    background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
+    padding:80px 24px 60px; text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7);
+  }
+  .division-title{
+    color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:76px; line-height:1; letter-spacing:.02em; text-transform:uppercase;
+    margin-top:16px;
+  }
+  .hero .sub{
+    margin-top:14px; font-size:15px; font-weight:500; color:rgba(255,255,255,.8);
+    max-width:520px; margin-left:auto; margin-right:auto;
+  }
+
+  .content{ max-width:1040px; margin:0 auto; padding:64px 24px 20px; }
+
+  .loc-category{ margin-bottom:52px; }
+  .loc-category h2{
+    color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:30px; letter-spacing:.02em; margin-bottom:6px;
+  }
+  .loc-category .cat-sub{ font-size:13.5px; color:#6b5b7a; margin-bottom:20px; }
+
+  .loc-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  .loc-card{
+    background:var(--white); border:1px solid #E5DCEC;
+    position:relative; overflow:hidden;
+  }
+  .loc-card .map-frame{ width:100%; height:140px; border:0; display:block; background:#E5DCEC; }
+  .loc-card .card-body{ padding:18px 20px 20px; }
+  .loc-card .pin{
+    width:9px; height:9px; border-radius:50% 50% 50% 0; background:var(--purple-700);
+    transform:rotate(-45deg); margin-bottom:12px;
+  }
+  .loc-card .name{ font-family:'League Spartan', sans-serif; font-weight:800; font-size:15.5px; color:var(--ink-900); line-height:1.25; }
+  .loc-card .addr{ font-size:12.5px; color:#6b5b7a; margin-top:6px; line-height:1.5; }
+  .loc-card .note{ font-size:11.5px; color:var(--purple-500); font-weight:600; margin-top:8px; font-style:italic; }
+  .loc-card .directions{
+    display:inline-flex; align-items:center; gap:5px; margin-top:12px;
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:11.5px;
+    letter-spacing:.03em; text-transform:uppercase; color:var(--purple-700);
+  }
+  .loc-card .directions:hover{ text-decoration:underline; text-underline-offset:2px; }
+  .loc-card .directions svg{ width:12px; height:12px; }
+
+  .office-card{
+    background:var(--purple-950); color:var(--white);
+    overflow:hidden;
+  }
+  .office-card .map-frame{ width:100%; height:180px; border:0; display:block; }
+  .office-card .office-body{
+    padding:26px 28px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .office-card .name{ font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:30px; letter-spacing:.01em; }
+  .office-card .addr{ font-size:14px; color:rgba(255,255,255,.8); margin-top:4px; }
+  .office-card .phone{ font-size:14px; color:rgba(255,255,255,.8); margin-top:2px; }
+  .office-card .directions-btn{
+    background:var(--white); color:var(--purple-950);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:.04em; text-transform:uppercase; padding:13px 24px; text-decoration:none;
+    white-space:nowrap;
+  }
+  .office-card .directions-btn:hover{ opacity:.85; }
+
+  .cta-block{
+    background:var(--purple-950); margin:0; padding:52px 24px; text-align:center;
+  }
+  .cta-block .wrap{ max-width:600px; margin:0 auto; }
+  .cta-block h3{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:34px; letter-spacing:.02em; margin-bottom:10px; }
+  .cta-block p{ color:rgba(255,255,255,.82); font-size:14.5px; font-weight:500; margin-bottom:22px; }
+  .cta-btn{
+    display:inline-block; background:var(--white); color:var(--purple-950);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px;
+    letter-spacing:.03em; text-transform:uppercase; padding:14px 30px; border-radius:4px;
+    transition:opacity .15s; text-decoration:none;
+  }
+  .cta-btn:hover{ opacity:.85; }
+
+  @media (max-width:900px){
+    .loc-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px){
+    .hero{ padding:36px 20px 40px; }
+    .division-title{ font-size:44px; }
+    .content{ padding:44px 20px 20px; }
+    .loc-grid{ grid-template-columns:1fr; }
+    .loc-category{ margin-bottom:40px; }
+    .office-card .office-body{ flex-direction:column; align-items:flex-start; }
+    .office-card .directions-btn{ width:100%; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.cyasoccer.org" target="_top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">CYA Recreational Soccer</span>
+  <h1 class="division-title">Field Locations</h1>
+  <p class="sub">Where we practice and play, across every age group.</p>
+</section>
+
+<div class="content">
+
+  <div class="loc-category">
+    <h2>Parks</h2>
+    <p class="cat-sub">Every address below is verified, with a live map and directions link for each.</p>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=13808%20Wall%20Rd%2C%20Herndon%2C%20VA%2020171&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Sully Highlands Park</div>
+          <div class="addr">13808 Wall Rd, Herndon, VA 20171</div>
+          <div class="note">Home turf for Bantams &amp; Academy</div>
+          <a class="directions" href="https://maps.google.com/?cid=8079837047876781051" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=4718%20Stringfellow%20Rd%2C%20Fairfax%2C%20VA%2022030&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Poplar Tree Park</div>
+          <div class="addr">4718 Stringfellow Rd, Fairfax, VA 22030</div>
+          
+          <a class="directions" href="https://maps.google.com/?cid=41694548469032665" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=5200%20Arrowhead%20Park%20Dr%2C%20Centreville%2C%20VA%2020120&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Arrowhead Park</div>
+          <div class="addr">5200 Arrowhead Park Dr, Centreville, VA 20120</div>
+          
+          <a class="directions" href="https://maps.google.com/?cid=15695889529813001438" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=13112%20Autumn%20Willow%20Dr%2C%20Fairfax%2C%20VA%2022030&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Stringfellow Park</div>
+          <div class="addr">13112 Autumn Willow Dr, Fairfax, VA 22030</div>
+          
+          <a class="directions" href="https://maps.google.com/?cid=13412463221467435765" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=13590%20Franklin%20Farm%20Rd%2C%20Herndon%2C%20VA%2020171&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Franklin Farm Park</div>
+          <div class="addr">13590 Franklin Farm Rd, Herndon, VA 20171</div>
+          
+          <a class="directions" href="https://maps.google.com/?cid=14880803004240322517" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="loc-category">
+    <h2>Schools</h2>
+    <p class="cat-sub">Junior and Senior games are often played at these locations around Chantilly.</p>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=3300%20Lees%20Corner%20Rd%2C%20Chantilly%2C%20VA%2020151&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Franklin Middle School</div>
+          <div class="addr">3300 Lees Corner Rd, Chantilly, VA 20151</div>
+          
+          <a class="directions" href="https://maps.google.com/?cid=6091061271061835023" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=4201%20Stringfellow%20Rd%2C%20Chantilly%2C%20VA%2020151&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Chantilly High School</div>
+          <div class="addr">4201 Stringfellow Rd, Chantilly, VA 20151</div>
+          
+          <a class="directions" href="https://maps.google.com/?cid=1466521838263717753" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=4700%20Stonecroft%20Blvd%2C%20Chantilly%2C%20VA%2020151&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Westfield High School</div>
+          <div class="addr">4700 Stonecroft Blvd, Chantilly, VA 20151</div>
+          
+          <a class="directions" href="https://maps.google.com/?cid=1758636343922563586" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      <div class="loc-card">
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=13618%20McLearen%20Rd%2C%20Herndon%2C%20VA%2020171&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="card-body">
+          <div class="pin"></div>
+          <div class="name">Rachel Carson Middle School</div>
+          <div class="addr">13618 McLearen Rd, Herndon, VA 20171</div>
+          
+          <a class="directions" href="https://maps.google.com/?cid=4497641689938755021" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="loc-category">
+    <h2>CYA Office</h2>
+    <div class="office-card">
+      <iframe class="map-frame" src="https://maps.google.com/maps?q=14810%20Murdock%20St%2C%20Chantilly%2C%20VA%2020151&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="office-body">
+        <div>
+          <div class="name">The Fieldhouse</div>
+          <div class="addr">14810 Murdock St, Chantilly, VA 20151</div>
+          <div class="phone">703-376-8337</div>
+        </div>
+        <a class="directions-btn" href="https://maps.google.com/?cid=14180282882790307433" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-block">
+  <div class="wrap">
+    <h3>Ready To Register?</h3>
+    <p>Fall registration is open now, find your division and get on a team.</p>
+    <a class="cta-btn" href="https://chantillyyouth.ottosport.ai/_registration" target="_blank" rel="noopener">Register For Fall Soccer</a>
+  </div>
+</div>
+
+</body>
+</html>
