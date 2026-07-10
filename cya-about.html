@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-950:#1B0F38;
+    --purple-800:#2E1B5C;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+  .topbar{
+    background:var(--purple-950); padding:18px 24px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .topbar .wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .topbar a{
+    color:rgba(255,255,255,.85); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:6px;
+    transition:color .15s; padding:9px 4px;
+  }
+  .topbar a:hover{ color:var(--white); }
+  .topbar svg{ width:14px; height:14px; }
+
+  .hero{
+    position:relative;
+    background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
+    padding:88px 24px 68px; text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7);
+  }
+  .age-tag{
+    display:inline-block; margin-top:22px;
+    border:1px solid rgba(255,255,255,.4); color:rgba(255,255,255,.92);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:.14em; text-transform:uppercase;
+    padding:7px 18px;
+  }
+  .division-title{
+    color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:84px; line-height:1; letter-spacing:.02em; text-transform:uppercase;
+    margin-top:16px;
+  }
+  .birth-line{
+    margin-top:14px; font-size:13px; font-weight:700; color:rgba(255,255,255,.72);
+    letter-spacing:.05em; text-transform:uppercase;
+  }
+  .meta-row{
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+    gap:0; margin:34px auto 0; max-width:780px;
+  }
+  .meta-row .meta-item{
+    color:rgba(255,255,255,.9); font-size:12.5px; font-weight:700;
+    letter-spacing:.04em; text-transform:uppercase;
+    padding:4px 18px; position:relative;
+  }
+  .meta-row .meta-item:not(:last-child)::after{
+    content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
+    width:1px; height:11px; background:rgba(255,255,255,.28);
+  }
+  .meta-row .meta-item:first-child{ padding-left:0; }
+
+  .content{ max-width:800px; margin:0 auto; padding:64px 24px 20px; }
+  .content h2{
+    color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:32px; letter-spacing:.02em; margin-bottom:16px;
+  }
+  .section-block{ margin-bottom:52px; }
+  .section-block p{
+    font-size:15.5px; font-weight:500; color:var(--ink-900); line-height:1.7;
+    margin-bottom:14px;
+  }
+  .section-block p:last-child{ margin-bottom:0; }
+  .purpose-statement{
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:24px;
+    color:var(--purple-700); line-height:1.4; border-left:3px solid var(--purple-700);
+    padding-left:20px;
+  }
+  .rally-line{
+    font-family:'League Spartan', sans-serif; font-weight:800; font-size:19px;
+    color:var(--purple-700); margin-top:18px; letter-spacing:.01em;
+  }
+
+  .cta-block{
+    background:var(--purple-950); margin:0; padding:52px 24px; text-align:center;
+  }
+  .cta-block .wrap{ max-width:600px; margin:0 auto; }
+  .cta-block h3{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:34px; letter-spacing:.02em; margin-bottom:10px; }
+  .cta-block p{ color:rgba(255,255,255,.82); font-size:14.5px; font-weight:500; margin-bottom:22px; }
+  .cta-btn{
+    display:inline-block; background:var(--white); color:var(--purple-950);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px;
+    letter-spacing:.03em; text-transform:uppercase; padding:14px 30px; border-radius:4px;
+    transition:opacity .15s;
+  }
+  .cta-btn:hover{ opacity:.85; }
+
+  @media (max-width:640px){
+    .hero{ padding:36px 20px 44px; }
+    .age-tag{ margin-top:14px; }
+    .division-title{ font-size:48px; margin-top:12px; }
+    .birth-line{ margin-top:10px; }
+    .meta-row{ margin-top:22px; }
+    .hero{ background:linear-gradient(165deg, var(--purple-950) 0%, var(--purple-950) 62%, var(--purple-700) 62%, var(--purple-700) 100%); }
+    .content{ padding:44px 20px 20px; }
+    .section-block{ margin-bottom:38px; }
+    .purpose-statement{ font-size:19px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.cyasoccer.org" target="_top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">Chantilly Youth Association</span>
+  <div class="age-tag">Est. 1971</div>
+  <h1 class="division-title">We Are CYA</h1>
+  <p class="birth-line">Supporting Chantilly-area soccer for more than 50 years</p>
+  <div class="meta-row">
+    <span class="meta-item">Recreational &amp; Travel Soccer</span>
+    <span class="meta-item">Founded 1971</span>
+    <span class="meta-item">Chantilly, VA</span>
+  </div>
+</section>
+
+<div class="content">
+  <div class="section-block">
+    <h2>Our Purpose</h2>
+    <p class="purpose-statement">To educate youth to play soccer, and live, with purpose.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>Our Mission</h2>
+    <p>CYA Soccer provides professional quality training and education to youth players, from beginners to elite athletes. We strive to ensure that every player who comes through our program has a positive, memorable experience as they develop into the best players they can be. The quality of our coaches, administrators, facilities, and fields combine to offer an unparalleled program and approach. We encourage a love of the game, because we love the game. CYA Soccer is on a mission to win, learn, have fun, and grow.</p>
+    <p>We offer a pathway from U4 soccer to travel at U9 through our Pre-Travel Program and Development Clinics, where players work with professional and certified coaches, have access to the Fieldhouse facilities, and take part in cross-training for strength, conditioning, and injury prevention. From beginners to elite players, CYA Soccer is a professionally run, one-stop shop for players and families.</p>
+    <p class="rally-line">We ARE Chantilly Soccer. We ARE CYA.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>Our Philosophy</h2>
+    <p>Chantilly Youth Association strives to create an enjoyable, technically based, pressure-free learning environment with a high degree of professional and ethical standards. CYA is committed to the growth of its membership base by implementing high-level educational programs as it continues to build local and international relationships.</p>
+    <p>Every high-level club has a clear, documented purpose for existing. A club philosophy gives every member, volunteer, and staffer a common source of inspiration and guidance. We may agree or disagree on methods, but not on what we stand for as an organization, a standard we've held ourselves to since the club's founding in 1971. CYA is about nurturing the spirit of the game and developing healthy, well-rounded kids. It's about education and everything that provides us as players, coaches, and administrators. It's about ethical behavior, not because other clubs are watching, but because it's the right way to be.</p>
+    <p>The goal we all share as educators is to offer every player a common thread of growth, on and off the field. We're committed to reaching that goal.</p>
+  </div>
+</div>
+
+<div class="cta-block">
+  <div class="wrap">
+    <h3>Ready To Join CYA?</h3>
+    <p>Fall registration is open now, find your division and get on a team.</p>
+    <a class="cta-btn" href="https://chantillyyouth.ottosport.ai/_registration" target="_blank" rel="noopener">Register For Fall Soccer</a>
+  </div>
+</div>
+
+</body>
+</html>
