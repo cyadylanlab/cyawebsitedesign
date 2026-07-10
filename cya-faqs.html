@@ -16,6 +16,7 @@
     --ink-900:#221238;
     --white:#FFFFFF;
   }
+  html{ scroll-behavior:smooth; }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
   a{color:var(--purple-700); text-decoration:underline; text-underline-offset:2px;}
@@ -54,6 +55,27 @@
   }
 
   .content{ max-width:820px; margin:0 auto; padding:60px 24px 20px; }
+
+  .jump-nav{
+    background:var(--white); border-bottom:1px solid #E5DCEC;
+    padding:16px 24px; position:sticky; top:0; z-index:10;
+  }
+  .jump-nav .wrap{
+    max-width:820px; margin:0 auto;
+    display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+  }
+  .jump-nav .label{
+    font-family:'League Spartan', sans-serif; font-weight:800; font-size:11px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--purple-500);
+    margin-right:6px;
+  }
+  .jump-nav a{
+    color:var(--purple-700); background:var(--cream-50); border:1px solid #E5DCEC;
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:12.5px;
+    text-decoration:none; padding:8px 14px; border-radius:20px;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .jump-nav a:hover{ background:var(--purple-700); color:var(--white); border-color:var(--purple-700); }
 
   .notice{
     background:var(--white); border:1px solid #E5DCEC; border-left:4px solid var(--purple-700);
@@ -140,6 +162,19 @@
   <p class="sub">Everything you need to know before, during, and after the season. Click a question to expand it.</p>
 </section>
 
+<div class="jump-nav">
+  <div class="wrap">
+    <span class="label">Jump to</span>
+    <a href="#age-changes">Age Group Changes</a>
+    <a href="#getting-started">Getting Started</a>
+    <a href="#games-practices">Games, Practices &amp; Teams</a>
+    <a href="#cost-registration">Cost &amp; Registration</a>
+    <a href="#equipment-gameday">Equipment &amp; Gameday</a>
+    <a href="#coaching-volunteering">Coaching &amp; Volunteering</a>
+    <a href="#policies-weather">Policies, Weather &amp; Travel</a>
+  </div>
+</div>
+
 <div class="content">
 
   <div class="notice">
@@ -148,7 +183,7 @@
     <p>For the exact birth-date range for your child's age group, <a class="table-link" href="https://www.cyasoccer.org" target="_top">see the age groups on our division pages</a>.</p>
   </div>
 
-  <div class="faq-category">
+  <div class="faq-category" id="age-changes">
     <h2>Age Group Changes</h2>
     <p class="cat-sub">The switch to an August&ndash;July cycle, explained.</p>
 
@@ -202,7 +237,7 @@
     </details>
   </div>
 
-  <div class="faq-category">
+  <div class="faq-category" id="getting-started">
     <h2>Getting Started</h2>
     <p class="cat-sub">New to CYA, or figuring out where your player fits.</p>
 
@@ -235,7 +270,7 @@
     </details>
   </div>
 
-  <div class="faq-category">
+  <div class="faq-category" id="games-practices">
     <h2>Games, Practices &amp; Teams</h2>
     <p class="cat-sub">Schedules, formats, and how teams come together.</p>
 
@@ -256,7 +291,7 @@
     <details class="faq-item">
       <summary>How many players are on each team?<span class="icon"></span></summary>
       <div class="faq-answer">
-        <p>U4&ndash;U5 plays 2v2 (no goalkeepers). U6 plays 3v3 (no goalkeepers). U7&ndash;U8 plays 4v4 (no goalkeepers). U9&ndash;U10 plays 7v7 with goalkeepers. U11&ndash;U12 plays 8v8. U13&ndash;U19 plays 11v11. Small-sided play is mandated by the Virginia Youth Soccer Association and strongly supported by CYA.</p>
+        <p>U4&ndash;U6 plays 2v2 (no goalkeepers). U7 plays 3v3, and U8 plays 4v4 (no goalkeepers for either). U9&ndash;U10 plays 7v7 with goalkeepers. U11&ndash;U12 plays 9v9. U13&ndash;U19 plays 11v11. Small-sided play is mandated by the Virginia Youth Soccer Association and strongly supported by CYA.</p>
       </div>
     </details>
 
@@ -275,7 +310,7 @@
     </details>
   </div>
 
-  <div class="faq-category">
+  <div class="faq-category" id="cost-registration">
     <h2>Cost, Registration &amp; Refunds</h2>
     <p class="cat-sub">Fees, financial aid, and what happens if plans change.</p>
 
@@ -306,7 +341,7 @@
     </details>
   </div>
 
-  <div class="faq-category">
+  <div class="faq-category" id="equipment-gameday">
     <h2>Equipment &amp; Gameday Rules</h2>
     <p class="cat-sub">What to buy, and what's not allowed on the field.</p>
 
@@ -346,7 +381,7 @@
     </details>
   </div>
 
-  <div class="faq-category">
+  <div class="faq-category" id="coaching-volunteering">
     <h2>Coaching &amp; Volunteering</h2>
     <p class="cat-sub">How CYA is run, and how to get involved.</p>
 
@@ -386,7 +421,7 @@
     </details>
   </div>
 
-  <div class="faq-category">
+  <div class="faq-category" id="policies-weather">
     <h2>Policies, Weather &amp; Travel</h2>
     <p class="cat-sub">Conduct, field closures, and the path to competitive soccer.</p>
 
@@ -414,8 +449,8 @@
     <details class="faq-item">
       <summary>What is NCSL (formerly SFL)?<span class="icon"></span></summary>
       <div class="faq-answer">
-        <p>NCSL is the recreational league CYA's Senior program (U11&ndash;U19) competes in, spanning teams from across Northern Virginia, DC, and Maryland. The season runs 8 games plus an end-of-season tournament, weather permitting.</p>
-        <div class="flag"><b>Worth confirming:</b> the source content for this answer still references the prior name (SFL) and an unresolved note about NCSL taking over that role. Worth checking with whoever owns this content for the current, accurate name and status before publishing.</div>
+        <p>NCSL is the recreational league CYA's older players compete in, spanning U11&ndash;U12 (the top of Juniors) through all of Seniors (U13&ndash;U19), with teams from across Northern Virginia, DC, and Maryland. The season runs 8 games plus an end-of-season tournament, weather permitting.</p>
+        <div class="flag"><b>Worth confirming:</b> the source content for this answer still references the prior name (SFL) and an unresolved note about NCSL taking over that role. Worth checking with whoever owns this content for the current, accurate name and status before publishing. I also updated the old "Senior Program (U11&ndash;U19)" grouping referenced here to match your current Juniors/Seniors division split, since that categorization predates the new structure.</div>
       </div>
     </details>
 
