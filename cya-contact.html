@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — Contact Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-950:#1B0F38;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:var(--purple-700); text-decoration:none;}
+  a:hover{ text-decoration:underline; text-underline-offset:2px; }
+  ul{list-style:none;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+  .topbar{
+    background:var(--purple-950); padding:18px 24px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .topbar .wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .topbar a{
+    color:rgba(255,255,255,.85); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:6px;
+    transition:color .15s; padding:9px 4px; text-decoration:none;
+  }
+  .topbar a:hover{ color:var(--white); text-decoration:none; }
+  .topbar svg{ width:14px; height:14px; }
+
+  .hero{
+    position:relative;
+    background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
+    padding:80px 24px 60px; text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7);
+  }
+  .division-title{
+    color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:76px; line-height:1; letter-spacing:.02em; text-transform:uppercase;
+    margin-top:16px;
+  }
+  .hero .sub{
+    margin-top:14px; font-size:15px; font-weight:500; color:rgba(255,255,255,.8);
+    max-width:520px; margin-left:auto; margin-right:auto;
+  }
+
+  .content{ max-width:880px; margin:0 auto; padding:60px 24px 20px; }
+
+  .quickcard{
+    background:var(--purple-950); color:var(--white);
+    padding:28px 30px; margin-bottom:56px;
+    display:flex; flex-wrap:wrap; gap:32px; align-items:center; justify-content:space-between;
+  }
+  .quickcard div h3{ font-family:'League Spartan', sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:5px; }
+  .quickcard div p, .quickcard div a{ font-size:16px; font-weight:700; color:var(--white); }
+  .quickcard div a:hover{ color:var(--white); }
+
+  .contact-category{ margin-bottom:52px; }
+  .contact-category h2{
+    color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:30px; letter-spacing:.02em; margin-bottom:20px;
+  }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .contact-row{
+    background:var(--white); border:1px solid #E5DCEC; padding:18px 20px;
+  }
+  .contact-row .name{ font-family:'League Spartan', sans-serif; font-weight:800; font-size:15.5px; color:var(--ink-900); }
+  .contact-row .role{ font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--purple-500); margin-top:2px; }
+  .contact-row .email{ font-size:14px; font-weight:600; margin-top:8px; display:block; word-break:break-word; }
+  .contact-row .note{ font-size:12px; color:#8a7a97; margin-top:6px; font-style:italic; }
+
+  .flag{
+    background:#FBF3E4; border:1px solid #E9D6A6; border-radius:6px;
+    padding:12px 16px; font-size:13px; color:#6B5518; margin-top:16px; line-height:1.55;
+  }
+  .flag b{ color:#4A3A0F; }
+
+  .cta-block{
+    background:var(--purple-950); margin:0; padding:52px 24px; text-align:center;
+  }
+  .cta-block .wrap{ max-width:600px; margin:0 auto; }
+  .cta-block h3{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:34px; letter-spacing:.02em; margin-bottom:10px; }
+  .cta-block p{ color:rgba(255,255,255,.82); font-size:14.5px; font-weight:500; margin-bottom:22px; }
+  .cta-btn{
+    display:inline-block; background:var(--white); color:var(--purple-950);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px;
+    letter-spacing:.03em; text-transform:uppercase; padding:14px 30px; border-radius:4px;
+    transition:opacity .15s; text-decoration:none;
+  }
+  .cta-btn:hover{ opacity:.85; text-decoration:none; }
+
+  @media (max-width:640px){
+    .hero{ padding:36px 20px 40px; }
+    .division-title{ font-size:44px; }
+    .content{ padding:44px 20px 20px; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .quickcard{ padding:22px; margin-bottom:40px; flex-direction:column; align-items:flex-start; gap:18px; }
+    .contact-category{ margin-bottom:40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.cyasoccer.org" target="_top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">CYA Recreational Soccer</span>
+  <h1 class="division-title">Contact Us</h1>
+  <p class="sub">Find the right person, the first time.</p>
+</section>
+
+<div class="content">
+
+  <div class="quickcard">
+    <div>
+      <h3>Phone</h3>
+      <a href="tel:7033768337">703-376-8337</a>
+    </div>
+    <div>
+      <h3>Address</h3>
+      <p>14810 Murdock Street, Chantilly, VA 20151</p>
+    </div>
+    <div>
+      <h3>General Questions</h3>
+      <a href="mailto:soccer@chantillyyouth.org">soccer@chantillyyouth.org</a>
+    </div>
+  </div>
+
+  <div class="contact-category">
+    <h2>General Questions</h2>
+    <div class="contact-grid">
+      <div class="contact-row">
+        <div class="name">CYA Registrar</div>
+        <div class="role">Registration Questions</div>
+        <a class="email" href="mailto:registrar@chantillyyouth.org">registrar@chantillyyouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Mark Abbott</div>
+        <div class="role">CYA Executive Director</div>
+        <a class="email" href="mailto:mabbott@chantillyyouth.org">MAbbott@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Heidi Howser</div>
+        <div class="role">CYA Registrar / Administrator</div>
+        <a class="email" href="mailto:hhowser@chantillyyouth.org">HHowser@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Travel Program</div>
+        <div class="role">Competitive Travel Soccer</div>
+        <a class="email" href="http://www.virginiavalorfc.org" target="_blank" rel="noopener">See Virginia Valor FC</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-category">
+    <h2>Recreational Programs</h2>
+    <div class="contact-grid">
+      <div class="contact-row">
+        <div class="name">Dylan Sutherland</div>
+        <div class="role">CYA Soccer &mdash; Program Director</div>
+        <a class="email" href="mailto:cyadylan@chantillyyouth.org">CYADylan@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">CYA Soccer</div>
+        <div class="role">General Questions</div>
+        <a class="email" href="mailto:soccer@chantillyyouth.org">Soccer@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Sofiane Allaouat</div>
+        <div class="role">Director, Recreational Camps &amp; Clinics</div>
+        <a class="email" href="mailto:cyasofiane@chantillyyouth.org">CYASofiane@ChantillyYouth.org</a>
+        <div class="flag"><b>Fixed a broken link here:</b> the live site displays this address but the link underneath actually pointed to a different, unrelated inbox (glopez@chantillyyouth.org), so messages sent from the visible address were going to the wrong person. Pointed it to CYASofiane@ChantillyYouth.org to match the naming pattern used for every other coordinator, worth confirming that's the correct current inbox.</div>
+      </div>
+      <div class="contact-row">
+        <div class="name">Pat Campbell</div>
+        <div class="role">Senior / SFL Coordinator</div>
+        <a class="email" href="mailto:soccersfl@chantillyyouth.org">SoccerSFL@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Byron Snow</div>
+        <div class="role">Junior Coordinator</div>
+        <a class="email" href="mailto:soccerjuniors@chantillyyouth.org">SoccerJuniors@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Tim Schaad</div>
+        <div class="role">Bantam Coordinator</div>
+        <a class="email" href="mailto:soccerbantams@chantillyyouth.org">SoccerBantams@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">April Day</div>
+        <div class="role">Rec All-Stars Administration Support</div>
+        <a class="email" href="mailto:aday@chantillyyouth.org">ADay@ChantillyYouth.org</a>
+      </div>
+    </div>
+    <div class="flag"><b>Worth confirming:</b> the coordinator titles above still list their old age ranges (Bantam U5&ndash;U7, Junior U8&ndash;U10, Senior/SFL U11&ndash;U19), which predate your current four-division split (Bantams U4&ndash;U6, Academy U7&ndash;U8, Juniors U9&ndash;U12, Seniors U13&ndash;U19). I left the titles as published rather than guessing at a reassignment, but you'll likely want to update these to match, and confirm whether Academy has its own coordinator now.</div>
+  </div>
+
+  <div class="contact-category">
+    <h2>Referees &amp; Fields</h2>
+    <div class="contact-grid">
+      <div class="contact-row">
+        <div class="name">Alan Liotta</div>
+        <div class="role">Referee Assignor, Travel Leagues</div>
+        <a class="email" href="mailto:cyaalan@chantillyyouth.org">CYAAlan@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Phil Yanchulis</div>
+        <div class="role">Referee Assignor, Recreational Games</div>
+        <a class="email" href="mailto:cyaphil@chantillyyouth.org">CYAPhil@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Alan Liotta</div>
+        <div class="role">Rules &amp; Discipline</div>
+        <a class="email" href="mailto:cyaalan@chantillyyouth.org">CYAAlan@ChantillyYouth.org</a>
+      </div>
+      <div class="contact-row">
+        <div class="name">Heidi Howser</div>
+        <div class="role">Fields</div>
+        <a class="email" href="mailto:cyafields@chantillyyouth.org">CYAFields@ChantillyYouth.org</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <div class="wrap">
+    <h3>Ready To Register?</h3>
+    <p>Fall registration is open now, find your division and get on a team.</p>
+    <a class="cta-btn" href="https://chantillyyouth.ottosport.ai/_registration" target="_blank" rel="noopener">Register For Fall Soccer</a>
+  </div>
+</div>
+
+</body>
+</html>
