@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — FAQs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-950:#1B0F38;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:var(--purple-700); text-decoration:underline; text-underline-offset:2px;}
+  ul{list-style:none;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+  .topbar{
+    background:var(--purple-950); padding:18px 24px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .topbar .wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .topbar a{
+    color:rgba(255,255,255,.85); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:6px;
+    transition:color .15s; padding:9px 4px; text-decoration:none;
+  }
+  .topbar a:hover{ color:var(--white); }
+  .topbar svg{ width:14px; height:14px; }
+
+  .hero{
+    position:relative;
+    background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
+    padding:80px 24px 60px; text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7);
+  }
+  .division-title{
+    color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:76px; line-height:1; letter-spacing:.02em; text-transform:uppercase;
+    margin-top:16px;
+  }
+  .hero .sub{
+    margin-top:14px; font-size:15px; font-weight:500; color:rgba(255,255,255,.8);
+    max-width:520px; margin-left:auto; margin-right:auto;
+  }
+
+  .content{ max-width:820px; margin:0 auto; padding:60px 24px 20px; }
+
+  .notice{
+    background:var(--white); border:1px solid #E5DCEC; border-left:4px solid var(--purple-700);
+    padding:24px 26px; margin-bottom:56px;
+  }
+  .notice h2{ color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:28px; letter-spacing:.02em; margin-bottom:10px; }
+  .notice p{ font-size:14.5px; line-height:1.65; margin-bottom:12px; }
+  .notice p:last-child{ margin-bottom:0; }
+  .notice .table-link{ font-weight:700; }
+
+  .faq-category{ margin-bottom:52px; }
+  .faq-category h2{
+    color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:30px; letter-spacing:.02em; margin-bottom:6px;
+  }
+  .faq-category .cat-sub{ font-size:13.5px; color:#6b5b7a; margin-bottom:18px; }
+
+  details.faq-item{
+    border-bottom:1px solid #E5DCEC;
+  }
+  details.faq-item summary{
+    cursor:pointer; padding:18px 4px; list-style:none;
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:15px; color:var(--ink-900);
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+  }
+  details.faq-item summary::-webkit-details-marker{ display:none; }
+  details.faq-item summary .icon{
+    flex-shrink:0; width:22px; height:22px; border:1.5px solid var(--purple-700); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  details.faq-item summary .icon::before, details.faq-item summary .icon::after{
+    content:''; position:absolute; background:var(--purple-700); transition:transform .2s ease;
+  }
+  details.faq-item summary .icon::before{ width:10px; height:1.5px; }
+  details.faq-item summary .icon::after{ width:1.5px; height:10px; }
+  details[open].faq-item summary .icon::after{ transform:rotate(90deg); opacity:0; }
+  details.faq-item .faq-answer{
+    padding:0 30px 20px 4px; font-size:14.5px; line-height:1.7; color:#3d2e4d;
+  }
+  details.faq-item .faq-answer p{ margin-bottom:12px; }
+  details.faq-item .faq-answer p:last-child{ margin-bottom:0; }
+  details.faq-item .faq-answer .flag{
+    background:#FBF3E4; border:1px solid #E9D6A6; border-radius:6px;
+    padding:10px 14px; font-size:13px; color:#6B5518; margin-top:10px;
+  }
+
+  .cta-block{
+    background:var(--purple-950); margin:0; padding:52px 24px; text-align:center;
+  }
+  .cta-block .wrap{ max-width:600px; margin:0 auto; }
+  .cta-block h3{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:34px; letter-spacing:.02em; margin-bottom:10px; }
+  .cta-block p{ color:rgba(255,255,255,.82); font-size:14.5px; font-weight:500; margin-bottom:22px; }
+  .cta-btn{
+    display:inline-block; background:var(--white); color:var(--purple-950);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px;
+    letter-spacing:.03em; text-transform:uppercase; padding:14px 30px; border-radius:4px;
+    transition:opacity .15s; text-decoration:none;
+  }
+  .cta-btn:hover{ opacity:.85; }
+
+  @media (max-width:640px){
+    .hero{ padding:36px 20px 40px; }
+    .division-title{ font-size:44px; }
+    .content{ padding:44px 20px 20px; }
+    .notice{ margin-bottom:40px; padding:20px; }
+    .faq-category{ margin-bottom:40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.cyasoccer.org" target="_top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">CYA Recreational Soccer</span>
+  <h1 class="division-title">FAQs</h1>
+  <p class="sub">Everything you need to know before, during, and after the season. Click a question to expand it.</p>
+</section>
+
+<div class="content">
+
+  <div class="notice">
+    <h2>2026&ndash;27 Age Group Changes</h2>
+    <p>Starting with the 2026&ndash;27 season, CYA Soccer and every governing body we play under (USYS, AYSO, US Club Soccer, and VYSA) are switching to an August 1 through July 31 age-group cycle, the same system used before 2017. This affects recreational and travel players alike.</p>
+    <p>For the exact birth-date range for your child's age group, <a class="table-link" href="https://www.cyasoccer.org" target="_top">see the age groups on our division pages</a>.</p>
+  </div>
+
+  <div class="faq-category">
+    <h2>Age Group Changes</h2>
+    <p class="cat-sub">The switch to an August&ndash;July cycle, explained.</p>
+
+    <details class="faq-item">
+      <summary>Why is this change being made?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>U.S. soccer ran on an August to July age-group system until 2017, when U.S. Soccer mandated a calendar-year system to match international registration. That switch didn't translate well here, since school years, not calendar years, are how most families think about grade level, and it left some players in 8th and 12th grade unable to register at all. U.S. Soccer reversed course, and the major national associations are returning to the school-year-based system.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>My child has a birthday after August 1. Do they have to repeat an age group?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Not necessarily. Players are encouraged to stay in their assigned age group, but a club can choose to play a player up with an older group. No player can play down with a younger group.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>My child is a year behind grade level. Can they play with their school grade?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>No. The new system generally aligns with grade level, but a player can't be placed on a team below where their birth year puts them.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is my team required to change?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Yes, every team registers on the August&ndash;July system now. Clubs can choose to keep a 2025&ndash;26 roster together for 2026&ndash;27, in which case players born August through December would simply play up a year. Check with your club on their specific policy.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can my player play up?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Yes. Leagues give clubs flexibility on player placement, as long as no one plays below their assigned age group.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>When does the new policy take effect?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>The 2026&ndash;27 seasonal year, beginning August 2026.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Does this affect recreational soccer too?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Yes, every registration under a U.S. Soccer&ndash;affiliated organization is affected, recreational and travel alike.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Getting Started</h2>
+    <p class="cat-sub">New to CYA, or figuring out where your player fits.</p>
+
+    <details class="faq-item">
+      <summary>Does my child need experience to play?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>No experience is necessary in our recreational program. We welcome players of every level.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How are the age groups organized?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Age groups are based on birth year and Virginia Youth Soccer Association guidelines. The four divisions are Bantams (U4&ndash;U6), Academy (U7&ndash;U8), Juniors (U9&ndash;U12), and Seniors (U13&ndash;U19).</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can my child play up an age group?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Yes. Check the "request to play up" option when you register (you'll need to do this each season) if you'd like your child placed with an older group, whether for school friends or skill level. Playing down into a younger group isn't allowed, CYA follows US Youth Soccer rules on this.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>When will we hear from the coach?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Age group coordinators start building teams after late registration opens, and rosters typically go out to coaches about two weeks before the season starts (early September for Fall, early April for Spring). Please hold off on reaching out before then, we won't be able to tell you who your coach is until rosters are finalized. You can check your child's team by logging into the registration system and clicking the team name next to their entry, though this can change right up until rosters are released.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Games, Practices &amp; Teams</h2>
+    <p class="cat-sub">Schedules, formats, and how teams come together.</p>
+
+    <details class="faq-item">
+      <summary>When and where are games played?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Bantam games are at Sully Highlands Park. Junior and Senior games are played around the Chantilly area, typically at local middle and elementary schools and parks. Most games are on Saturdays (first kickoff around 8:30am, last game done before 5pm), though times vary week to week. Senior players may also travel up to an hour away for games. Sunday games occasionally happen due to field availability or makeups.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What are practice times, and how many days a week?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>U4&ndash;U6 practice and play only on Saturdays. U7 practices once a week at the Academy. U8 practices once a week at the Academy plus once with their team coach. U9 and up practice twice a week. Practices typically run 5pm or later on weeknights until dark, exact day, time, and location are set by your coach based on availability.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How many players are on each team?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>U4&ndash;U5 plays 2v2 (no goalkeepers). U6 plays 3v3 (no goalkeepers). U7&ndash;U8 plays 4v4 (no goalkeepers). U9&ndash;U10 plays 7v7 with goalkeepers. U11&ndash;U12 plays 8v8. U13&ndash;U19 plays 11v11. Small-sided play is mandated by the Virginia Youth Soccer Association and strongly supported by CYA.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What are the field sizes?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Per US Youth Soccer recommendations: U4&ndash;U7 play on 20x30 yards, U8&ndash;U9 on 30x50 yards, U10 on 50x70 yards, and U11&ndash;U19 on fields ranging from 100x50 up to 120x80 yards.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I request a specific coach or team?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>We try to accommodate requests, but it isn't always possible, especially if you register after coordinators start forming teams. Add friend or coach requests to the "special requests" section when you register. Note that coordinators are encouraged to redistribute returning players each season so kids experience different coaching styles and teammates, so there's no guarantee of staying with the same coach or team from one season to the next. Teams are formed geographically where possible.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Cost, Registration &amp; Refunds</h2>
+    <p class="cat-sub">Fees, financial aid, and what happens if plans change.</p>
+
+    <details class="faq-item">
+      <summary>Are scholarships or financial aid available?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Yes, through the Fairfax County Youth Sports Scholarship Program. You must be a Fairfax County resident and provide a current Fairfax County Lunch Letter or Medicaid card each season (paperwork isn't retained season to season). Assistance covers one sport per season per player, and doesn't apply to multi-sport participation, camps/clinics, or competitive programs, recreational/house programs only.</p>
+        <p>Approved applicants must pay half the standard registration fee, no player is assigned to a team until that fee is received. Registration is confirmed on the payment date, not the registration date, so a payment delay can result in Waitlist status instead of Active. Late financial assistance payments still incur normal late fees.</p>
+        <p>Email your completed application and Lunch Letter/Medicaid card to <a href="mailto:sports@chantillyyouth.org">sports@chantillyyouth.org</a> after registering.</p>
+        <p><a href="https://www.fairfaxcounty.gov/neighborhood-community-services/sites/neighborhood-community-services/files/Assets/documents/Athletics/Scholarship/Youth%20Scholarship%20Application%20-%20English.pdf" target="_blank" rel="noopener">Application (English)</a> &middot; <a href="https://www.fairfaxcounty.gov/neighborhood-community-services/sites/neighborhood-community-services/files/Assets/documents/Athletics/Scholarship/Youth%20Scholarship%20Application%20-%20Spanish.pdf" target="_blank" rel="noopener">Application (Spanish)</a></p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I get a refund?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Registration fees are non-refundable as a general policy. Exceptions may be made at the Sport Coordinator's discretion for reasons like injury before the season starts, moving out of the area, or making a high school team. Fees (including late and service fees) are refunded if CYA doesn't field a team or sport, or if a player's status is still Waitlist after the season starts.</p>
+        <p>No refunds are issued for cancellations due to weather or other circumstances outside our control.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Does the registration fee include a uniform?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Yes. League play jerseys are included in the registration fee, one purple and one white jersey, required for game day. Jersey numbers are assigned, not selected. A "ready for pickup" email goes out to active registrants closer to the season, jerseys are available at the CYA Fieldhouse (Monday&ndash;Friday 9am&ndash;9pm, Saturday/Sunday 9am&ndash;3pm) after that.</p>
+        <p>Shin guards, cleats, black soccer shorts, and black soccer socks are not included and can be purchased separately. Outdoor cleats aren't permitted at the CYA Fieldhouse, indoor cleats or sneakers only.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Equipment &amp; Gameday Rules</h2>
+    <p class="cat-sub">What to buy, and what's not allowed on the field.</p>
+
+    <details class="faq-item">
+      <summary>What equipment do I need to buy?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Shin guards (required, worn under socks, not over), soccer cleats (non-soccer cleats like football or rugby cleats aren't permitted, they have an extra toe stud), black soccer shorts, black soccer socks long enough to cover shin guards, and an age-appropriate ball. Items are available online or at retailers like Dick's Sporting Goods and Target. CYA jerseys are available at the CYA Fieldhouse.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What size ball should I buy?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Size 3 for U4&ndash;U8, Size 4 for U9&ndash;U12, and Size 5 for U13 and up.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What about jewelry?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>No jewelry of any kind is permitted for safety reasons, necklaces can be grabbed, rings can scratch or catch, and earring posts can cause injury if struck by a ball even when taped. This includes starter earrings. Coaches and gameday referees strictly enforce this rule. If your player is considering a piercing, plan it for the off-season so healing time doesn't overlap with the season.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can my child wear eyeglasses, a cast, or religious jewelry?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Corrective eyeglasses are fine if properly secured (sport glasses recommended). Casts are allowed if wrapped in a protective covering and won't endanger other players, the referee makes the final call on a case-by-case basis. Medical bracelets and religious jewelry are permitted if not dangerous, and must be taped down (clear tape is best for visibility on medical bracelets). All other jewelry is not allowed.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Are noisemakers allowed at games or practice?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>No. Horns, wooden clappers, sirens, power megaphones, and similar noisemakers are banned at games and discouraged at practice. For Senior/NCSL division teams, noisemaker use by anyone at a game can result in forfeiture.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Coaching &amp; Volunteering</h2>
+    <p class="cat-sub">How CYA is run, and how to get involved.</p>
+
+    <details class="faq-item">
+      <summary>How do I get involved?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>CYA runs on volunteers, coaching, coordinating, field work, and everything in between. We can always use more help. Contact the Soccer Administrator at <a href="mailto:soccer@chantillyyouth.org">soccer@chantillyyouth.org</a> to get started.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Are CYA coaches "professional" coaches?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Our recreational coaches are usually parent volunteers, some hold coaching licenses or certificates, and all take part in a pre- and mid-season coaching seminar with our professional coaching staff. Coaches are encouraged to complete a licensing program, and CYA reimburses volunteer coaches for licensing class costs. Professional staff coaches are also available to support both coaches and players. Interested in coaching? Contact your division coordinator or <a href="mailto:soccer@chantillyyouth.org">soccer@chantillyyouth.org</a>.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Who referees the games?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Trained, certified referees officiate U8 and up. For U4&ndash;U7, coaches and parent volunteers facilitate the games.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I become a referee?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>CYA has one of the largest referee groups in Virginia, anyone 13 and older can join. Training is run by the State Referee Program (not CYA) and includes self-paced online modules plus a half-day field module and a required rules test. Cost is $85. Start at the <a href="https://vadcsoccerref.com/instruction/path-1" target="_blank" rel="noopener">State Referee Program website</a>. CYA's assignors work with you to avoid scheduling conflicts with your own games. Questions? Contact Alan Liotta at <a href="mailto:cyasoceref@aol.com">cyasoceref@aol.com</a> or Phil Yanchulis at <a href="mailto:cyaphil@chantillyyouth.org">cyaphil@chantillyyouth.org</a>.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I get coaching education information?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>For D and Grassroots licenses and Youth Coaching Modules, contact VYSA at <a href="https://www.vysa.com" target="_blank" rel="noopener">vysa.com</a> (CYA often sponsors these courses). For A, B, C, and National Youth licenses, contact US Soccer's Coaching Department at us-soccer.com or 312-808-1300.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-category">
+    <h2>Policies, Weather &amp; Travel</h2>
+    <p class="cat-sub">Conduct, field closures, and the path to competitive soccer.</p>
+
+    <details class="faq-item">
+      <summary>How do I report a behavior issue with a coach, parent, player, or referee?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Contact us immediately at <a href="mailto:soccer@chantillyyouth.org">soccer@chantillyyouth.org</a>. CYA has a zero-tolerance policy for unsportsmanlike conduct.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Who determines field closures?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Fairfax County determines closures based on conditions like snow, ice, or saturated fields, and CYA follows the county's call. We don't control county field closings but must adhere to them. You can also check with your coach directly.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I find out about field closings?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>CYA announces closures via social media and email, follow us on Facebook and Instagram (links in the site header) to stay current. You can also call the Park Authority Hotline at 703-324-5264, or check with your coach.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What is NCSL (formerly SFL)?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>NCSL is the recreational league CYA's Senior program (U11&ndash;U19) competes in, spanning teams from across Northern Virginia, DC, and Maryland. The season runs 8 games plus an end-of-season tournament, weather permitting.</p>
+        <div class="flag"><b>Worth confirming:</b> the source content for this answer still references the prior name (SFL) and an unresolved note about NCSL taking over that role. Worth checking with whoever owns this content for the current, accurate name and status before publishing.</div>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What about travel soccer?<span class="icon"></span></summary>
+      <div class="faq-answer">
+        <p>Travel soccer is a more competitive level of play, run through Virginia Valor FC, CYA's travel soccer partner. Email <a href="mailto:info@virginiavalorfc.org">info@virginiavalorfc.org</a> or visit <a href="http://www.virginiavalorfc.org" target="_blank" rel="noopener">virginiavalorfc.org</a> to get connected with the right coach.</p>
+      </div>
+    </details>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <div class="wrap">
+    <h3>Still Have Questions?</h3>
+    <p>Registration questions go to registrar@chantillyyouth.org, or call 703-376-8337.</p>
+    <a class="cta-btn" href="https://chantillyyouth.ottosport.ai/_registration" target="_blank" rel="noopener">Register For Fall Soccer</a>
+  </div>
+</div>
+
+</body>
+</html>
