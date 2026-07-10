@@ -153,7 +153,11 @@
     .age-tag{ margin-top:14px; }
     .division-title{ font-size:48px; margin-top:12px; }
     .birth-line{ margin-top:10px; }
-    .meta-row{ margin-top:22px; }
+    .meta-row{
+      margin-top:22px; flex-direction:column; align-items:center; gap:10px;
+    }
+    .meta-row .meta-item{ padding:0; }
+    .meta-row .meta-item::after{ display:none; }
     .hero{ background:linear-gradient(165deg, var(--purple-950) 0%, var(--purple-950) 62%, var(--purple-700) 62%, var(--purple-700) 100%); }
     .content{ padding:44px 20px 20px; }
     .section-block{ margin-bottom:38px; }
@@ -186,9 +190,9 @@
 <span class="meta-item">Games Begin: September 13, 2026</span>
 <span class="meta-item">7&ndash;8 Weeks &middot; Saturdays</span>
 <span class="meta-item">Location: Chantilly &amp; Surrounding Areas</span>
-<span class="meta-item">Cost: $185 (Spring 2026 rate)</span>
+<span class="meta-item">Cost: $185 (Fall 2026 rate)</span>
   </div>
-  <p class="hero-footnote">Training start date and cost are Spring 2026 figures &mdash; confirm for Fall</p>
+  <p class="hero-footnote">Training start date shown is a Spring 2026 figure &mdash; confirm for Fall</p>
 </section>
 
 <div class="content">
@@ -218,7 +222,7 @@
 <div class="detail-item"><span class="label">Games Begin</span><span class="value">September 13, 2026</span></div>
 <div class="detail-item"><span class="label">Practice Frequency</span><span class="value">2x/week</span></div>
 <div class="detail-item"><span class="label">Games</span><span class="value">Saturdays, Chantilly &amp; surrounding areas</span></div>
-<div class="detail-item"><span class="label">Cost</span><span class="value tbd">$185 (Spring 2026 rate &mdash; confirm for Fall)</span></div>
+<div class="detail-item"><span class="label">Cost</span><span class="value">$185 (Fall 2026 rate)</span></div>
 <div class="detail-item"><span class="label">Coaching</span><span class="value">Parent volunteers, guided by CYA staff coaches</span></div>
 
     </div>
