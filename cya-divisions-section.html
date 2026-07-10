@@ -52,23 +52,15 @@
   .division-card{
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.3);
-    border-top:4px solid rgba(255,255,255,.85);
+    border-top:4px solid var(--acc, rgba(255,255,255,.85));
     padding:18px 16px 16px;
     display:flex; flex-direction:column;
     position:relative; overflow:hidden;
-    transition:background .25s, border-color .25s, flex .5s cubic-bezier(.4,0,.2,1);
+    transition:background .25s, border-color .25s, flex .5s cubic-bezier(.4,0,.2,1), transform .3s ease, box-shadow .3s ease;
   }
   .division-card:hover{
     background:rgba(255,255,255,.1);
     border-color:rgba(255,255,255,.55);
-  }
-  .division-card .card-top{
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .division-card .card-index{
-    display:none;
-    font-family:'Bebas Neue', sans-serif; font-size:14px; letter-spacing:.05em;
-    color:rgba(255,255,255,.4);
   }
   .division-card .age-tag{
     display:inline-block; align-self:flex-start;
@@ -129,30 +121,65 @@
   /* ---- desktop with real hover: expanding panel row ---- */
   @media (min-width:900px) and (hover:hover) and (pointer:fine){
     .division-grid{
-      display:flex; flex-direction:row; align-items:stretch; gap:6px; min-height:560px;
+      display:flex; flex-direction:row; align-items:stretch; gap:6px; min-height:440px;
     }
     .division-card{
       flex:1 1 0%; padding:36px 30px 30px;
+      justify-content:center; align-items:center; text-align:center;
     }
-    .division-card .card-index{ display:block; font-size:16px; }
-    .division-card .age-tag{ font-size:15px; letter-spacing:.08em; padding:7px 16px; }
-    .division-card .division-name{ font-size:46px; margin-top:22px; }
-    .division-card .kicker{ display:block; font-size:14.5px; margin-top:9px; }
-    .division-card .extra-info{ display:block; font-size:14px; margin-top:18px; }
-    .division-card .stat-grid{ gap:24px; margin-top:22px; }
-    .division-card .stat{ min-width:120px; }
+    .division-card .age-tag{
+      font-size:13px; letter-spacing:.1em; padding:6px 15px;
+      align-self:center;
+    }
+    .division-card .division-name{
+      font-size:64px; margin-top:18px;
+      transition:font-size .4s ease, margin-top .4s ease;
+    }
+    .division-card .kicker{
+      display:block; font-size:14.5px; margin-top:0; text-align:center;
+      opacity:0; max-height:0; overflow:hidden;
+      transition:opacity .3s ease, max-height .4s ease, margin-top .4s ease;
+    }
+    .division-card .extra-info{
+      display:block; font-size:14px; margin-top:0; text-align:center; max-width:100%;
+      opacity:0; max-height:0; overflow:hidden;
+      transition:opacity .3s ease, max-height .4s ease, margin-top .4s ease;
+    }
+    .division-card .stat-grid{
+      gap:24px; margin-top:0; justify-content:center;
+      opacity:0; max-height:0; overflow:hidden;
+      transition:opacity .3s ease, max-height .4s ease, margin-top .4s ease;
+    }
+    .division-card .stat{ min-width:auto; text-align:center; }
     .division-card .stat:nth-child(2){ display:block; }
     .division-card .stat .stat-label{ font-size:10.5px; margin-bottom:4px; }
     .division-card .stat .stat-value{ font-size:14.5px; }
-    .division-card .card-foot{ padding-top:24px; }
-    .division-card .birth-range{ display:block; font-size:11px; letter-spacing:.05em; margin-bottom:14px; }
+    .division-card .card-foot{
+      padding-top:0; border-top-color:transparent; margin-top:0; width:100%;
+      opacity:0; max-height:0; overflow:hidden;
+      transition:opacity .3s ease, max-height .4s ease, padding-top .4s ease, margin-top .4s ease, border-color .4s ease;
+    }
+    .division-card .birth-range{ display:block; font-size:11px; letter-spacing:.05em; margin-bottom:14px; text-align:center; }
     .division-card .cta-btn{ font-size:14px; letter-spacing:.06em; padding:15px 20px; }
     .division-card .cta-btn svg{ width:15px; height:15px; }
+
+    /* ---- hover: shrink the title, reveal everything else, add some lift ---- */
+    .division-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 40px rgba(0,0,0,.28);
+    }
+    .division-card:hover .division-name{ font-size:44px; margin-top:14px; color:var(--acc); }
+    .division-card:hover .kicker{ opacity:1; max-height:60px; margin-top:8px; }
+    .division-card:hover .extra-info{ opacity:1; max-height:140px; margin-top:12px; }
+    .division-card:hover .stat-grid{ opacity:1; max-height:100px; margin-top:20px; }
+    .division-card:hover .card-foot{
+      opacity:1; max-height:160px; padding-top:20px; margin-top:20px; border-top-color:rgba(255,255,255,.2);
+    }
+
     .division-grid:hover .division-card{ flex:0.86 1 0%; }
     .division-grid .division-card:hover{ flex:1.75 1 0%; }
-    .division-card:hover .division-name{ font-size:58px; }
-    .division-grid:hover .division-card:not(:hover){ opacity:.72; }
-    .division-card{ transition:background .25s, border-color .25s, opacity .3s, flex .5s cubic-bezier(.4,0,.2,1); }
+    .division-grid:hover .division-card:not(:hover){ opacity:.6; }
+    .division-card{ transition:background .25s, border-color .25s, opacity .3s, flex .5s cubic-bezier(.4,0,.2,1), transform .3s ease, box-shadow .3s ease; }
   }
 
   @media (max-width:420px){
@@ -179,14 +206,11 @@
       <p class="subhead">From first touches to full pitch &mdash; there&rsquo;s a spot for every player.</p>
     </div>
     <div class="division-grid">
-      <a class="division-card" href="https://www.cyasoccer.org/u4-u6bantams" target="_top">
-        <div class="card-top">
-          <span class="age-tag">U4&ndash;U6</span>
-          <span class="card-index">01</span>
-        </div>
+      <a class="division-card" href="https://www.cyasoccer.org/u4-u6bantams" target="_top" style="--acc:#FFFFFF">
+        <span class="age-tag">U4&ndash;U6</span>
         <span class="division-name">Bantams</span>
         <span class="kicker">First touches, first friends.</span>
-        <p class="extra-info">Coed play for U4&ndash;U5, separate boys&rsquo; and girls&rsquo; groups at U6.</p>
+        <p class="extra-info">Our first taste of organized soccer. Coed play for U4&ndash;U5, with separate boys&rsquo; and girls&rsquo; groups starting at U6.</p>
         <div class="stat-grid">
           <div class="stat">
             <span class="stat-label">Start Date</span>
@@ -203,14 +227,11 @@
         </div>
       </a>
       
-      <a class="division-card" href="https://www.cyasoccer.org/u7-u8academy" target="_top">
-        <div class="card-top">
-          <span class="age-tag">U7&ndash;U8</span>
-          <span class="card-index">02</span>
-        </div>
+      <a class="division-card" href="https://www.cyasoccer.org/u7-u8academy" target="_top" style="--acc:#E8DDF2">
+        <span class="age-tag">U7&ndash;U8</span>
         <span class="division-name">Academy</span>
         <span class="kicker">Where skills start to click.</span>
-        <p class="extra-info">Weekly academy training on top of team practice for U7&ndash;U8.</p>
+        <p class="extra-info">Skill-building through weekly academy training, on top of regular team practice, for U7&ndash;U8 players.</p>
         <div class="stat-grid">
           <div class="stat">
             <span class="stat-label">Start Date</span>
@@ -227,14 +248,11 @@
         </div>
       </a>
       
-      <a class="division-card" href="https://www.cyasoccer.org/u9-u12juniors" target="_top">
-        <div class="card-top">
-          <span class="age-tag">U9&ndash;U12</span>
-          <span class="card-index">03</span>
-        </div>
+      <a class="division-card" href="https://www.cyasoccer.org/u9-u12juniors" target="_top" style="--acc:#C9AEDD">
+        <span class="age-tag">U9&ndash;U12</span>
         <span class="division-name">Juniors</span>
         <span class="kicker">Real games, real teammates.</span>
-        <p class="extra-info">U11&ndash;U12 step into NCSL Recreational play, two practices a week.</p>
+        <p class="extra-info">Two practices a week build toward Saturday games. U11&ndash;U12 step up into NCSL Recreational league play.</p>
         <div class="stat-grid">
           <div class="stat">
             <span class="stat-label">Start Date</span>
@@ -251,14 +269,11 @@
         </div>
       </a>
       
-      <a class="division-card" href="https://www.cyasoccer.org/u13-u19seniors" target="_top">
-        <div class="card-top">
-          <span class="age-tag">U13&ndash;U19</span>
-          <span class="card-index">04</span>
-        </div>
+      <a class="division-card" href="https://www.cyasoccer.org/u13-u19seniors" target="_top" style="--acc:#A67FCB">
+        <span class="age-tag">U13&ndash;U19</span>
         <span class="division-name">Seniors</span>
         <span class="kicker">Full pitch. Full effort.</span>
-        <p class="extra-info">Full 11v11 regulation soccer, competing in the NCSL Recreational league.</p>
+        <p class="extra-info">Full 11v11 regulation soccer for our oldest players, competing in the NCSL Recreational league.</p>
         <div class="stat-grid">
           <div class="stat">
             <span class="stat-label">Start Date</span>
