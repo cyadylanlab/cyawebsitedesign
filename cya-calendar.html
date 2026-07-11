@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — Fall 2026 Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-950:#1B0F38;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:var(--purple-700); text-decoration:none;}
+  a:hover{ text-decoration:underline; text-underline-offset:2px; }
+  ul{list-style:none;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+  .topbar{ background:var(--purple-950); padding:18px 24px; border-bottom:1px solid rgba(255,255,255,.14); }
+  .topbar .wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .topbar a{ color:rgba(255,255,255,.85); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:6px; transition:color .15s; padding:9px 4px; text-decoration:none; }
+  .topbar a:hover{ color:var(--white); text-decoration:none; }
+  .topbar svg{ width:14px; height:14px; }
+
+  .hero{
+    background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
+    padding:80px 24px 60px; text-align:center;
+  }
+  .hero .eyebrow{ font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7); }
+  .division-title{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:72px; line-height:1; letter-spacing:.02em; text-transform:uppercase; margin-top:16px; }
+  .hero .sub{ margin-top:14px; font-size:15px; font-weight:500; color:rgba(255,255,255,.8); max-width:520px; margin-left:auto; margin-right:auto; }
+
+  .content{ max-width:760px; margin:0 auto; padding:60px 24px 20px; }
+  .section-block{ margin-bottom:44px; }
+  .content h2{ color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:28px; letter-spacing:.02em; margin-bottom:14px; }
+  .content p{ font-size:14.5px; line-height:1.7; margin-bottom:12px; color:#3d2e4d; }
+
+  .notice{
+    background:var(--white); border:1px solid #E5DCEC; border-left:4px solid var(--purple-700);
+    padding:20px 24px; margin-bottom:44px;
+  }
+  .notice p{ font-size:14px; margin-bottom:8px; }
+  .notice p:last-child{ margin-bottom:0; }
+
+  .date-list{ display:flex; flex-direction:column; gap:2px; }
+  .date-row{
+    display:flex; gap:18px; align-items:baseline;
+    background:var(--white); border:1px solid #E5DCEC; padding:13px 18px;
+  }
+  .date-row .date{
+    font-family:'League Spartan', sans-serif; font-weight:800; font-size:13px;
+    color:var(--purple-700); min-width:56px; flex-shrink:0;
+  }
+  .date-row .detail{ font-size:13.5px; color:var(--ink-900); }
+
+  .pill-grid{ display:flex; flex-wrap:wrap; gap:8px; }
+  .pill{
+    background:var(--white); border:1px solid #E5DCEC; color:var(--ink-900);
+    font-size:13px; font-weight:600; padding:8px 14px;
+  }
+  .pill.rain{ border-color:#E9D6A6; background:#FBF3E4; color:#6B5518; }
+  .pill.holiday{ border-color:#e5b8b8; background:#FBEBEB; color:#8a3a3a; }
+
+  .fieldhouse-card{
+    background:var(--purple-950); color:var(--white); padding:24px 26px;
+  }
+  .fieldhouse-card h3{ font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:22px; letter-spacing:.02em; margin-bottom:8px; }
+  .fieldhouse-card .addr{ font-size:14px; color:rgba(255,255,255,.85); margin-bottom:14px; }
+  .fieldhouse-card .hours{ font-size:13px; color:rgba(255,255,255,.75); line-height:1.8; }
+  .fieldhouse-card .hours strong{ color:var(--white); }
+
+  .cta-block{ background:var(--purple-950); margin:0; padding:52px 24px; text-align:center; }
+  .cta-block .wrap{ max-width:600px; margin:0 auto; }
+  .cta-block h3{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:34px; letter-spacing:.02em; margin-bottom:10px; }
+  .cta-block p{ color:rgba(255,255,255,.82); font-size:14.5px; font-weight:500; margin-bottom:22px; }
+  .cta-btn{ display:inline-block; background:var(--white); color:var(--purple-950); font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px; letter-spacing:.03em; text-transform:uppercase; padding:14px 30px; border-radius:4px; transition:opacity .15s; text-decoration:none; }
+  .cta-btn:hover{ opacity:.85; text-decoration:none; }
+
+  @media (max-width:640px){
+    .hero{ padding:36px 20px 40px; }
+    .division-title{ font-size:42px; }
+    .content{ padding:44px 20px 20px; }
+    .date-row{ flex-direction:column; gap:4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.cyasoccer.org" target="_top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">CYA Recreational Soccer</span>
+  <h1 class="division-title">Fall 2026 Calendar</h1>
+  <p class="sub">Key dates, jersey info, and game days for the season.</p>
+</section>
+
+<div class="content">
+
+  <div class="notice">
+    <p><strong>New jersey cycle as of Fall 2025:</strong> jerseys are included in your registration fee at no additional cost. Jersey numbers are assigned, players and parents can&rsquo;t choose a number.</p>
+    <p>If your player&rsquo;s jersey from Spring 2026 still fits, there&rsquo;s no need to pick up a new one for Fall 2026.</p>
+    <p>Players with an <strong>Active</strong> registration status should hear from their coach the week of August 30, if not before. This depends on volunteer coach registration, so timing can vary. Players with a <strong>Pending</strong> status are not eligible to practice or play.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>CYA Fieldhouse &amp; Jersey Pickup</h2>
+    <div class="fieldhouse-card">
+      <h3>The Fieldhouse</h3>
+      <div class="addr">14810 Murdock Street, Chantilly, VA 20151</div>
+      <div class="hours">
+        <strong>Monday&ndash;Friday:</strong> 6:00 AM &ndash; 9:00 PM<br>
+        <strong>Saturday:</strong> 9:00 AM &ndash; 2:00 PM<br>
+        <strong>Sunday:</strong> 9:00 AM &ndash; 4:00 PM
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Key Dates</h2>
+    <div class="date-list">
+      <div class="date-row"><span class="date">7/26</span><span class="detail">Late registration begins, +$25</span></div>
+      <div class="date-row"><span class="date">8/24</span><span class="detail">Team training can begin (won&rsquo;t apply to all teams)</span></div>
+      <div class="date-row"><span class="date">9/10</span><span class="detail">U7/U8 Girls Academy begins, Wednesdays</span></div>
+      <div class="date-row"><span class="date">9/12</span><span class="detail">U7/U8 Boys Academy begins, Fridays</span></div>
+      <div class="date-row"><span class="date">9/13</span><span class="detail">Opening weekend of games</span></div>
+      <div class="date-row"><span class="date">9/26</span><span class="detail">Picture Day, U4&ndash;U7</span></div>
+      <div class="date-row"><span class="date">10/17</span><span class="detail">Picture Day, U8&ndash;U10</span></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Game Days</h2>
+    <div class="pill-grid">
+      <span class="pill">Sept 12</span>
+      <span class="pill">Sept 19</span>
+      <span class="pill">Sept 26</span>
+      <span class="pill">Oct 3</span>
+      <span class="pill">Oct 17</span>
+      <span class="pill">Oct 24</span>
+      <span class="pill">Oct 31</span>
+      <span class="pill">Nov 7</span>
+      <span class="pill">Nov 14</span>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Reserved Rain Dates</h2>
+    <div class="pill-grid">
+      <span class="pill rain">Nov 8</span>
+      <span class="pill rain">Nov 15</span>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>Holidays &mdash; No Games</h2>
+    <div class="pill-grid">
+      <span class="pill holiday">Labor Day, Sept 7</span>
+      <span class="pill holiday">Columbus Day, Oct 12</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <div class="wrap">
+    <h3>Ready To Register?</h3>
+    <p>Fall registration is open now, find your division and get on a team.</p>
+    <a class="cta-btn" href="https://chantillyyouth.ottosport.ai/_registration" target="_blank" rel="noopener">Register For Fall Soccer</a>
+  </div>
+</div>
+
+</body>
+</html>

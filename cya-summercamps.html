@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — Summer Camps 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-950:#1B0F38;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:var(--purple-700); text-decoration:none;}
+  a:hover{ text-decoration:underline; text-underline-offset:2px; }
+  ul{list-style:none;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+  .topbar{
+    background:var(--purple-950); padding:18px 24px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .topbar .wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .topbar a{
+    color:rgba(255,255,255,.85); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:6px;
+    transition:color .15s; padding:9px 4px; text-decoration:none;
+  }
+  .topbar a:hover{ color:var(--white); text-decoration:none; }
+  .topbar svg{ width:14px; height:14px; }
+
+  .hero{
+    position:relative;
+    background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%);
+    padding:80px 24px 60px; text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7);
+  }
+  .division-title{
+    color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:72px; line-height:1; letter-spacing:.02em; text-transform:uppercase;
+    margin-top:16px;
+  }
+  .hero .sub{
+    margin-top:14px; font-size:15px; font-weight:500; color:rgba(255,255,255,.8);
+    max-width:520px; margin-left:auto; margin-right:auto;
+  }
+
+  .content{ max-width:760px; margin:0 auto; padding:60px 24px 20px; }
+
+  .resource-list{ display:flex; flex-direction:column; gap:12px; }
+  .resource-row{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background:var(--white); border:1px solid #E5DCEC; border-left:3px solid var(--purple-700);
+    padding:18px 22px;
+  }
+  .resource-row .label{ font-family:'League Spartan', sans-serif; font-weight:700; font-size:15px; color:var(--ink-900); }
+  .resource-row .sub{ font-size:12.5px; color:#8a7a97; margin-top:2px; }
+  .resource-row .go{
+    flex-shrink:0; display:flex; align-items:center; gap:6px;
+    font-family:'League Spartan', sans-serif; font-weight:800; font-size:12px;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--purple-700);
+  }
+  .resource-row .go svg{ width:12px; height:12px; }
+
+  .section-block{ margin-bottom:44px; }
+  .content h2{
+    color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400;
+    font-size:28px; letter-spacing:.02em; margin-bottom:14px;
+  }
+  .content p{ font-size:14.5px; line-height:1.7; margin-bottom:12px; color:#3d2e4d; }
+  .content p:last-child{ margin-bottom:0; }
+  .content strong{ color:var(--ink-900); }
+
+  .flag{
+    background:#FBF3E4; border:1px solid #E9D6A6; border-radius:6px;
+    padding:12px 16px; font-size:13px; color:#6B5518; margin-top:16px; line-height:1.55;
+  }
+  .flag b{ color:#4A3A0F; }
+
+  .cta-block{
+    background:var(--purple-950); margin:0; padding:52px 24px; text-align:center;
+  }
+  .cta-block .wrap{ max-width:600px; margin:0 auto; }
+  .cta-block h3{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:34px; letter-spacing:.02em; margin-bottom:10px; }
+  .cta-block p{ color:rgba(255,255,255,.82); font-size:14.5px; font-weight:500; margin-bottom:22px; }
+  .cta-btn{
+    display:inline-block; background:var(--white); color:var(--purple-950);
+    font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px;
+    letter-spacing:.03em; text-transform:uppercase; padding:14px 30px; border-radius:4px;
+    transition:opacity .15s; text-decoration:none;
+  }
+  .cta-btn:hover{ opacity:.85; text-decoration:none; }
+
+  @media (max-width:640px){
+    .hero{ padding:36px 20px 40px; }
+    .division-title{ font-size:42px; }
+    .content{ padding:44px 20px 20px; }
+    .resource-row{ flex-direction:column; align-items:flex-start; gap:10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.cyasoccer.org" target="_top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">CYA Recreational Soccer</span>
+  <h1 class="division-title">Summer Camps 2026</h1>
+  <p class="sub">High-energy skill-building weeks at Sully Highlands Park, powered by Virginia Valor FC.</p>
+</section>
+
+<div class="content">
+
+  <div class="section-block">
+    <p style="font-size:12.5px; color:var(--purple-500); font-weight:700; letter-spacing:.06em; text-transform:uppercase;">Powered by Virginia Valor FC</p>
+    <p>Summer is the perfect time for players to develop their skills, stay active, and have fun on the field. Valor Summer Soccer Camps provide high-quality training, engaging game play, and a positive environment that helps players grow in confidence and ability. Camps feature professional coaching, skill-focused sessions, fun competitions, and team-based activities for players of all levels.</p>
+  </div>
+
+  <div class="resource-list" style="margin-bottom:44px;">
+    <a class="resource-row" href="https://playmetrics.com/signup?clubToken=TG9naW4tQ2x1Yi52MS04NzYtMTc3NDE5MDY0NXxCZmJ5UDRHN2ZOdTJvZnJoVGFqNjRkeFJ3ZEhlWnViWHRRNkhxd2luYkt3PQ==&program_id=85707" target="_blank" rel="noopener">
+        <div><div class="label">Register For Camp</div><div class="sub">PlayMetrics</div></div>
+        <span class="go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></span>
+      </a>
+  </div>
+
+  <div class="section-block">
+    <h2>Why Choose Valor Summer Camps</h2>
+    <p><strong>Professional Coaching:</strong> training led by experienced Valor coaches, with an emphasis on individual development and game understanding<br>
+    <strong>Skill Development:</strong> dribbling, passing, shooting, finishing, and position-specific techniques<br>
+    <strong>Engaging Games &amp; Competitions:</strong> small-sided games and challenges that build creativity, confidence, and sportsmanship<br>
+    <strong>Fitness &amp; Conditioning:</strong> age-appropriate activities that keep players active and match-ready<br>
+    <strong>Team Building:</strong> leadership, communication, and teamwork in every session</p>
+  </div>
+
+  <div class="section-block">
+    <h2>Camp Location</h2>
+    <p>All camps are held at Sully Highlands Park, 13808 Wall Road, Herndon, VA 20171.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>2026 Summer Camp Schedule</h2>
+    <p><strong>July 13&ndash;16: World Cup Camp</strong><br>
+    Tournament-style play inspired by international competition, with team challenges and game-based learning.</p>
+    <p><strong>July 20&ndash;23: Complete Player Camp</strong><br>
+    Develop well-rounded technical and tactical skills across every area of the game.</p>
+    <p><strong>July 27&ndash;30: Striking &amp; Finishing Camp</strong><br>
+    A high-intensity camp built to sharpen the art of scoring, developing confident, composed attackers who can finish under pressure.</p>
+    <p><strong>July 27&ndash;30: Goalkeeping Camp</strong><br>
+    Specialized training all week for goalkeepers, working closely with one of Valor&rsquo;s Goalkeeper Directors. Runs alongside Striking &amp; Finishing the same week.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>Pricing</h2>
+    <p><strong>Early Bird</strong> (through May 15): Half Day $240 &middot; Full Day $340</p>
+    <p><strong>Regular</strong> (after May 15): Half Day $265 &middot; Full Day $365</p>
+    <p><strong>Late</strong> (starting May 16): Half Day $290 &middot; Full Day $390</p>
+    <p style="color:var(--purple-700); font-weight:700;">Early Bird discount ends May 16.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>Camp Highlights</h2>
+    <p><strong>Skill Development:</strong> ball control, dribbling, shooting, and position-specific skills<br>
+    <strong>Game Practice:</strong> small-sided games and scrimmages built into every day<br>
+    <strong>Personalized Coaching:</strong> small groups for focused feedback<br>
+    <strong>Teamwork and Fun:</strong> sportsmanship, collaboration, and enjoying the game</p>
+  </div>
+
+  <div class="section-block">
+    <h2>What To Bring</h2>
+    <p>Water, extra is encouraged &middot; a packed lunch for full-day campers &middot; soccer cleats, shin guards, and a ball</p>
+  </div>
+
+  <div class="section-block">
+    <h2>Sample Daily Schedule</h2>
+    <p><strong>Morning</strong><br>
+    9:00 Drop-off &amp; warm-up games &middot; 9:30 technical session #1 &middot; 10:15 snack &amp; water break &middot; 10:30 technical session #2 &amp; competitions &middot; 11:00 small-sided games / scrimmages &middot; 12:00 end of half-day camp / lunch for full-day campers</p>
+    <p><strong>Afternoon</strong> (full day only)<br>
+    1:00 afternoon technical session &middot; 1:45 snack &amp; water break &middot; 2:00 fun team competitions &middot; 2:20 afternoon scrimmages &middot; 3:00 pick-up</p>
+  </div>
+
+  <div class="resource-list">
+    <a class="resource-row" href="https://www.virginiavalorfc.org/summercamprefundpolicy" target="_blank" rel="noopener">
+        <div><div class="label">Summer Camp Refund Policy</div><div class="sub">Virginia Valor FC</div></div>
+        <span class="go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg></span>
+      </a>
+  </div>
+
+  <p style="font-size:13px; color:#8a7a97; font-style:italic; margin-top:20px;">Spots are limited and camps are expected to fill quickly. Register early to lock in Early Bird pricing.</p>
+
+</div>
+
+<div class="cta-block">
+  <div class="wrap">
+    <h3>Ready To Register?</h3>
+    <p>Fall registration is open now, find your division and get on a team.</p>
+    <a class="cta-btn" href="https://chantillyyouth.ottosport.ai/_registration" target="_blank" rel="noopener">Register For Fall Soccer</a>
+  </div>
+</div>
+
+</body>
+</html>
