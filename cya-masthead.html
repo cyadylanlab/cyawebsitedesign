@@ -82,13 +82,19 @@
     .masthead-reg .reg-short{ display:inline; }
   }
 
+  /* phones: one row that fits the fixed header height -> logo + name + Register.
+     Badge and social are dropped here so nothing overlaps or gets clipped. */
   @media (max-width:640px){
     .masthead{ padding:12px 16px; }
-    .masthead-row{ flex-direction:column; gap:12px; }
-    .brand-block{ justify-content:center; width:100%; }
+    .masthead-row{ gap:12px; }
     .pf-block{ display:none; }
-    .right-group{ justify-content:center; width:100%; gap:14px; }
-    .masthead-reg{ padding:10px 20px; font-size:12px; }
+    .social-row{ display:none; }
+    .brand-block{ gap:9px; min-width:0; }
+    .brand-block img{ height:26px; }
+    .brand-text .name{ font-size:18px; }
+    .masthead-reg{ padding:9px 16px; font-size:11px; flex-shrink:0; }
+    .masthead-reg .reg-full{ display:none; }
+    .masthead-reg .reg-short{ display:inline; }
   }
 </style>
 </head>
