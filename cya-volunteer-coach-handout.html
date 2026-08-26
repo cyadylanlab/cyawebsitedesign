@@ -17,6 +17,8 @@
     --line:#DFD6E8;
     --muted:#6B5C7B;
     --lilac:#B79BD6;
+    --maxw:1280px;
+    --gutter:max(24px, calc((100% - var(--maxw)) / 2));
   }
 
   *{box-sizing:border-box;}
@@ -32,37 +34,38 @@
     print-color-adjust:exact;
   }
 
-  .sheet{max-width:8.5in;margin:0 auto;background:var(--cream);}
+  .sheet{width:100%;background:var(--cream);}
 
   /* ---------------- masthead ---------------- */
-  .masthead{background:var(--dark);color:#fff;padding:30px 40px 26px;}
+  .masthead{background:var(--dark);color:#fff;padding:clamp(34px,4.5vw,68px) var(--gutter) clamp(28px,3.6vw,52px);}
   .masthead .eyebrow{
     font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;
     letter-spacing:.2em;text-transform:uppercase;color:var(--lilac);margin:0 0 10px;
   }
   .masthead h1{
-    font-family:'Bebas Neue',sans-serif;font-size:58px;line-height:.9;
+    font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,88px);line-height:.9;
     letter-spacing:.01em;margin:0;color:#fff;
   }
   .masthead h1 span{color:var(--lilac);}
-  .masthead .sub{margin:14px 0 0;font-size:13px;color:#D8CDE6;max-width:60ch;}
+  .masthead .sub{margin:16px 0 0;font-size:clamp(13px,1.1vw,15px);color:#D8CDE6;max-width:62ch;}
 
   .stripe{display:flex;}
   .stripe div{
-    flex:1;padding:10px 40px;background:var(--purple);color:#fff;
-    font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;
+    flex:1;padding:12px 40px;background:var(--purple);color:#fff;
+    font-family:'League Spartan',sans-serif;font-weight:700;font-size:clamp(11px,.95vw,13px);
     letter-spacing:.14em;text-transform:uppercase;
   }
-  .stripe div + div{background:var(--deep);text-align:right;}
+  .stripe div:first-child{padding-left:var(--gutter);}
+  .stripe div + div{background:var(--deep);text-align:right;padding-right:var(--gutter);}
 
   /* ---------------- philosophy band ---------------- */
-  .philosophy{padding:26px 40px 4px;}
+  .philosophy{padding:clamp(30px,3.4vw,52px) var(--gutter) 4px;}
   .philosophy .kicker{
     font-family:'League Spartan',sans-serif;font-weight:800;font-size:11px;
     letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin:0 0 10px;
   }
   .philosophy h2{
-    font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;
+    font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,2.6vw,40px);line-height:1;
     letter-spacing:.02em;margin:0 0 12px;color:var(--dark);
   }
   .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 22px;}
@@ -73,16 +76,16 @@
   .pgrid b{font-weight:600;color:var(--dark);}
 
   /* ---------------- parts ---------------- */
-  .part{padding:26px 40px 0;}
+  .part{padding:clamp(30px,3.4vw,52px) var(--gutter) 0;}
   .part-head{
-    display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:end;
+    display:grid;grid-template-columns:clamp(64px,5vw,86px) 1fr;gap:20px;align-items:end;
     border-bottom:3px solid var(--purple);padding-bottom:10px;margin-bottom:18px;
   }
   .part-head .num{
-    font-family:'Bebas Neue',sans-serif;font-size:58px;line-height:.72;color:var(--purple);
+    font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,4.4vw,68px);line-height:.72;color:var(--purple);
   }
   .part-head h2{
-    font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:.95;
+    font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,3vw,46px);line-height:.95;
     letter-spacing:.02em;margin:0;color:var(--dark);
   }
   .part-head p{margin:4px 0 0;font-size:12.5px;color:var(--muted);}
@@ -203,11 +206,11 @@
 
   /* ---------------- footer ---------------- */
   .takeaway{
-    margin-top:30px;background:var(--dark);color:#fff;padding:26px 40px;
+    margin-top:clamp(30px,3.4vw,56px);background:var(--dark);color:#fff;padding:clamp(28px,3.4vw,54px) var(--gutter);
     display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;
   }
   .takeaway p{
-    margin:0;font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1.04;letter-spacing:.01em;
+    margin:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,2.8vw,44px);line-height:1.04;letter-spacing:.01em;
   }
   .takeaway p em{font-style:normal;color:var(--lilac);}
   .takeaway .who{font-size:12px;color:#D8CDE6;text-align:right;line-height:1.65;}
@@ -216,14 +219,29 @@
     letter-spacing:.16em;text-transform:uppercase;color:var(--lilac);margin-bottom:4px;
   }
 
+  @media (min-width:1100px){
+    body{font-size:14.5px;}
+    .acts{grid-template-columns:repeat(2,1fr);gap:16px;}
+    .sits{grid-template-columns:repeat(4,1fr);}
+    .flow{gap:16px;}
+    .split{gap:26px;}
+    .pgrid{grid-template-columns:repeat(3,1fr);gap:10px 30px;}
+  }
+
   /* ---------------- print ---------------- */
   @page{size:letter;margin:0.45in 0;}
 
   @media print{
+    :root{--gutter:0.5in;--maxw:100%;}
     body{background:#fff;font-size:11.5px;}
     .sheet{max-width:none;}
-    .masthead{padding:24px 40px 20px;}
+    .masthead{padding:24px var(--gutter) 20px;}
     .masthead h1{font-size:46px;}
+    .part-head .num{font-size:52px;}
+    .part-head h2{font-size:32px;}
+    .takeaway p{font-size:30px;}
+    .sits{grid-template-columns:1fr 1fr;}
+    .pgrid{grid-template-columns:1fr 1fr;}
     .part{break-before:page;}
     .part-head,.note,.agecard,.act,.sit,.flow .step,.ladder .rung,.takeaway{break-inside:avoid;}
     table{break-inside:auto;}
