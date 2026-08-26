@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer | Volunteer Coach Handout | Bantam + Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF7FB;
+    --purple:#592B82;
+    --deep:#4A2270;
+    --dark:#1B0F38;
+    --ink:#221238;
+    --line:#DFD6E8;
+    --muted:#6B5C7B;
+    --lilac:#B79BD6;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:13.5px;
+    line-height:1.55;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  .sheet{max-width:8.5in;margin:0 auto;background:var(--cream);}
+
+  /* ---------------- masthead ---------------- */
+  .masthead{background:var(--dark);color:#fff;padding:30px 40px 26px;}
+  .masthead .eyebrow{
+    font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--lilac);margin:0 0 10px;
+  }
+  .masthead h1{
+    font-family:'Bebas Neue',sans-serif;font-size:58px;line-height:.9;
+    letter-spacing:.01em;margin:0;color:#fff;
+  }
+  .masthead h1 span{color:var(--lilac);}
+  .masthead .sub{margin:14px 0 0;font-size:13px;color:#D8CDE6;max-width:60ch;}
+
+  .stripe{display:flex;}
+  .stripe div{
+    flex:1;padding:10px 40px;background:var(--purple);color:#fff;
+    font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;
+  }
+  .stripe div + div{background:var(--deep);text-align:right;}
+
+  /* ---------------- philosophy band ---------------- */
+  .philosophy{padding:26px 40px 4px;}
+  .philosophy .kicker{
+    font-family:'League Spartan',sans-serif;font-weight:800;font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin:0 0 10px;
+  }
+  .philosophy h2{
+    font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;
+    letter-spacing:.02em;margin:0 0 12px;color:var(--dark);
+  }
+  .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 22px;}
+  .pgrid p{margin:0;padding-left:16px;position:relative;}
+  .pgrid p::before{
+    content:"";position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--purple);
+  }
+  .pgrid b{font-weight:600;color:var(--dark);}
+
+  /* ---------------- parts ---------------- */
+  .part{padding:26px 40px 0;}
+  .part-head{
+    display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:end;
+    border-bottom:3px solid var(--purple);padding-bottom:10px;margin-bottom:18px;
+  }
+  .part-head .num{
+    font-family:'Bebas Neue',sans-serif;font-size:58px;line-height:.72;color:var(--purple);
+  }
+  .part-head h2{
+    font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:.95;
+    letter-spacing:.02em;margin:0;color:var(--dark);
+  }
+  .part-head p{margin:4px 0 0;font-size:12.5px;color:var(--muted);}
+
+  h3.sec{
+    font-family:'League Spartan',sans-serif;font-weight:800;font-size:12px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--purple);
+    margin:22px 0 10px;
+  }
+  h3.sec:first-of-type{margin-top:0;}
+
+  ul.plain{margin:0;padding:0;list-style:none;}
+  ul.plain li{position:relative;padding-left:16px;margin-bottom:6px;}
+  ul.plain li::before{
+    content:"";position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--purple);
+  }
+  ul.plain li b{font-weight:600;color:var(--dark);}
+
+  .note{
+    background:#fff;border-left:4px solid var(--purple);padding:13px 16px;margin:14px 0;
+  }
+  .note b{color:var(--purple);font-weight:600;}
+  .note p{margin:0;}
+
+  /* ---------------- two-column split ---------------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+  .agecard{background:#fff;border-top:3px solid var(--purple);padding:16px 18px 18px;}
+  .agecard.b{border-top-color:var(--deep);}
+  .agecard .label{
+    font-family:'League Spartan',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;
+  }
+  .agecard h4{
+    font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;letter-spacing:.02em;
+    margin:0 0 10px;color:var(--dark);
+  }
+  .agecard .stat{
+    font-family:'League Spartan',sans-serif;font-weight:800;font-size:13px;
+    color:var(--purple);margin:0 0 10px;letter-spacing:.02em;
+  }
+
+  /* ---------------- tables ---------------- */
+  table{width:100%;border-collapse:collapse;margin:0;}
+  thead th{
+    background:var(--dark);color:#fff;text-align:left;padding:8px 12px;
+    font-family:'League Spartan',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;
+  }
+  tbody td{
+    padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;
+    background:#fff;font-size:13px;
+  }
+  tbody td:first-child{width:44%;font-weight:500;color:var(--dark);}
+  tbody tr:last-child td{border-bottom:none;}
+
+  /* ---------------- flow blocks ---------------- */
+  .flow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .flow .step{background:#fff;padding:14px;border-top:3px solid var(--purple);}
+  .flow .step .n{
+    font-family:'League Spartan',sans-serif;font-weight:800;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;
+  }
+  .flow .step h4{
+    font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:1;margin:0 0 4px;color:var(--dark);
+  }
+  .flow .step .dur{font-size:11px;color:var(--purple);font-weight:600;display:block;margin-bottom:7px;}
+  .flow .step p{margin:0;font-size:12.5px;}
+
+  .ladder{margin:0;}
+  .ladder .rung{
+    background:#fff;padding:13px 16px;border-left:4px solid var(--purple);margin-bottom:8px;
+  }
+  .ladder .rung h4{
+    font-family:'League Spartan',sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;margin:0 0 5px;color:var(--dark);
+  }
+  .ladder .rung h4 em{font-style:normal;color:var(--purple);font-weight:600;letter-spacing:.02em;text-transform:none;}
+  .ladder .rung p{margin:0 0 5px;}
+  .ladder .rung p:last-child{margin-bottom:0;}
+  .ladder .rung .ex{font-size:12px;color:var(--muted);}
+  .ladder .rung:nth-child(2){border-left-color:var(--deep);}
+  .ladder .rung:nth-child(3){border-left-color:var(--dark);}
+
+  /* ---------------- activities ---------------- */
+  .acts{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .act{background:#fff;border-top:3px solid var(--purple);padding:14px 16px 16px;}
+  .act .who{
+    font-family:'League Spartan',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;
+  }
+  .act h4{
+    font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:1;letter-spacing:.02em;
+    margin:0 0 8px;color:var(--dark);
+  }
+  .act p{margin:0 0 7px;font-size:12.5px;}
+  .act p:last-child{margin-bottom:0;}
+  .act p strong{
+    font-family:'League Spartan',sans-serif;font-weight:800;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--purple);
+    display:block;margin-bottom:1px;
+  }
+
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;}
+  .chips span{
+    background:#fff;border:1px solid var(--line);padding:5px 11px;
+    font-size:12.5px;font-weight:500;color:var(--ink);
+  }
+
+  /* ---------------- situations ---------------- */
+  .sits{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sit{background:#fff;padding:14px 16px;border-left:4px solid var(--purple);}
+  .sit h4{
+    font-family:'League Spartan',sans-serif;font-weight:800;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;margin:0 0 6px;color:var(--purple);
+  }
+  .sit p{margin:0;font-size:12.5px;}
+
+  /* ---------------- footer ---------------- */
+  .takeaway{
+    margin-top:30px;background:var(--dark);color:#fff;padding:26px 40px;
+    display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;
+  }
+  .takeaway p{
+    margin:0;font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1.04;letter-spacing:.01em;
+  }
+  .takeaway p em{font-style:normal;color:var(--lilac);}
+  .takeaway .who{font-size:12px;color:#D8CDE6;text-align:right;line-height:1.65;}
+  .takeaway .who b{
+    display:block;font-family:'League Spartan',sans-serif;font-weight:800;font-size:10px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--lilac);margin-bottom:4px;
+  }
+
+  /* ---------------- print ---------------- */
+  @page{size:letter;margin:0.45in 0;}
+
+  @media print{
+    body{background:#fff;font-size:11.5px;}
+    .sheet{max-width:none;}
+    .masthead{padding:24px 40px 20px;}
+    .masthead h1{font-size:46px;}
+    .part{break-before:page;}
+    .part-head,.note,.agecard,.act,.sit,.flow .step,.ladder .rung,.takeaway{break-inside:avoid;}
+    table{break-inside:auto;}
+    tr{break-inside:avoid;}
+    h3.sec{break-after:avoid;}
+  }
+
+  @media (max-width:680px){
+    .masthead,.philosophy,.part,.takeaway{padding-left:20px;padding-right:20px;}
+    .stripe div{padding-left:20px;padding-right:20px;}
+    .stripe{flex-direction:column;}
+    .stripe div + div{text-align:left;}
+    .masthead h1{font-size:42px;}
+    .pgrid,.split,.acts,.sits,.flow{grid-template-columns:1fr;}
+    .part-head{grid-template-columns:44px 1fr;gap:12px;}
+    .part-head .num{font-size:42px;}
+    .part-head h2{font-size:27px;}
+    .takeaway{grid-template-columns:1fr;}
+    .takeaway .who{text-align:left;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <p class="eyebrow">Chantilly Youth Association Soccer</p>
+    <h1>Volunteer Coach<br>Session<br><span>Bantam + Academy</span></h1>
+    <p class="sub">Ages 4 through 8. This sheet is built to be used, not studied. Keep it in your bag, pull it out before practice, and steal from it all season.</p>
+  </header>
+
+  <div class="stripe">
+    <div>Bantams U4-U6 / Academy U7-U8</div>
+    <div>Fall 2026 Season</div>
+  </div>
+
+  <section class="philosophy">
+    <p class="kicker">Start here</p>
+    <h2>How We Coach</h2>
+    <div class="pgrid">
+      <p><b>Every player belongs.</b> Positive and player-centered, all season, every session.</p>
+      <p><b>Keep them moving.</b> Dead time is the enemy of a good session.</p>
+      <p><b>Praise effort over outcome.</b> Process and attitude beat results at this age.</p>
+      <p><b>Be consistent, be patient.</b> Routine and repetition are what build confidence.</p>
+      <p><b>Ask, don't tell.</b> "What did you see?" teaches more than "do this."</p>
+      <p><b>Fun is the point.</b> If they want to come back next week, you did the job.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 1 ============ -->
+  <section class="part">
+    <div class="part-head">
+      <div class="num">01</div>
+      <div>
+        <h2>Game Day, Start To Finish</h2>
+        <p>Format, fields, and what your hour actually looks like.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><b>Read this even if you have coached before.</b> Our U4-U8 game days are not traditional league matches. The format is modified on purpose, by age, to maximize the touches, decisions, and minutes each player gets. If you have experience with older age groups, expect it to look different.</p>
+    </div>
+
+    <h3 class="sec">Before you arrive</h3>
+    <ul class="plain">
+      <li>Fields are set up before families arrive. You do not need to move goals or mark lines.</li>
+      <li>Find your assigned field number and be there before your players are.</li>
+      <li>Bring a pump, any first aid supplies provided to you, and extra balls if you have them.</li>
+      <li>No roster to carry at these ages. If you ever need one, it is in Ottosport.</li>
+      <li>Check the forecast and know the weather and lightning policy before you leave home.</li>
+    </ul>
+
+    <h3 class="sec">Bantams / U4-U6 format</h3>
+    <p style="margin:0 0 12px;">Bantams do not have a separate practice during the week. They have one session, and it is a practice-play format: you run activities with your group first, then they play. Small fields run at the same time so every player is in action at once.</p>
+
+    <div class="flow">
+      <div class="step">
+        <span class="n">Block 1</span>
+        <h4>Practice</h4>
+        <span class="dur">First 25 minutes</span>
+        <p>Structured games with your full group. Dribbling games, tag games, small competitions. High energy, lots of touches, keep it moving.</p>
+      </div>
+      <div class="step">
+        <span class="n">Block 2</span>
+        <h4>Play</h4>
+        <span class="dur">Next 30 minutes</span>
+        <p>Players split across small fields and play. U4 and U5 play 2v2, U6 plays 3v3, and there are no goalkeepers at either age.</p>
+      </div>
+      <div class="step">
+        <span class="n">Block 3</span>
+        <h4>Wrap-Up</h4>
+        <span class="dur">Last 5 minutes</span>
+        <p>Bring everyone together. High fives, one fun recap, send them off with energy.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><b>No traditional restarts at Bantam.</b> No throw-ins, no kick-ins, no corners, no goalkeeper restarts. When the ball leaves the field, a coach or helper feeds a new ball in immediately. Maximum play, zero confusion over rules. Keep it flowing.</p>
+    </div>
+
+    <h3 class="sec">Academy / U7-U8 format</h3>
+    <p style="margin:0 0 12px;">Academy game day is small-sided and structured, but it is still a development format. Numbers can flex on the day depending on who shows up and what the group needs. Use your judgement.</p>
+
+    <div class="split">
+      <div class="agecard">
+        <span class="label">Academy</span>
+        <h4>U7</h4>
+        <p class="stat">3v3, no goalkeepers</p>
+        <ul class="plain">
+          <li>Teams split across small fields playing at the same time</li>
+          <li>Halves with a short break</li>
+          <li>Throw-ins and kick-ins apply</li>
+          <li>Subs between halves or at stoppages</li>
+        </ul>
+      </div>
+      <div class="agecard b">
+        <span class="label">Academy</span>
+        <h4>U8</h4>
+        <p class="stat">4v4, no goalkeepers</p>
+        <ul class="plain">
+          <li>Teams split across small fields playing at the same time</li>
+          <li>Halves with a short break</li>
+          <li>Throw-ins and kick-ins apply</li>
+          <li>Subs between halves or at stoppages</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><b>Their week.</b> Academy training runs once a week, led by the Director of Rec Soccer and CYA professional staff. That is the session everyone comes to, and it is where the nine-week curriculum lives. Staff coaches demonstrate and help on the field, so you are never inventing a session on the drive over. U8 teams can add a separate practice with their own coach on top of it.</p>
+    </div>
+
+    <div class="note">
+      <p><b>No goalkeepers anywhere through U8.</b> That is deliberate. Every player stays in the field of play and takes part in attacking and defending all game. And even though Academy games feel more like real games, the purpose is still development. Rotate fairly, do not park a player in one position, everyone plays equal time.</p>
+    </div>
+
+    <h3 class="sec">Your job on game day</h3>
+    <table>
+      <thead>
+        <tr><th>Task</th><th>What it looks like</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Arrival</td><td>Know who showed up and note any injuries or flags. No roster to check off at these ages, and Ottosport has one if you ever need it.</td></tr>
+        <tr><td>Sideline conduct</td><td>Positive and encouraging. No tactical shouting during play. Your voice should lift players, not steer them.</td></tr>
+        <tr><td>Substitutions</td><td>Rotate consistently. No child sits more than one half. A sub should never feel like a punishment.</td></tr>
+        <tr><td>Ball feeding (Bantam only)</td><td>Station yourself or a helper at each field edge. Ball goes out, fresh ball goes straight back in.</td></tr>
+        <tr><td>Restarts (Academy only)</td><td>Help players who are unsure about throw-ins and kick-ins, then move it along. The goal is play time, not procedure.</td></tr>
+        <tr><td>Injury protocol</td><td>Stop play immediately. Stay calm, your tone sets the tone. Contact the club for anything beyond a minor bump.</td></tr>
+        <tr><td>Team wrap-up</td><td>Bring them in. One positive thing. Celebrate effort and never lead with the score.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section class="part">
+    <div class="part-head">
+      <div class="num">02</div>
+      <div>
+        <h2>How 4 To 8 Year Olds Work</h2>
+        <p>Know this and half the job coaches itself.</p>
+      </div>
+    </div>
+
+    <h3 class="sec">Bantams / U4-U6</h3>
+    <table>
+      <thead>
+        <tr><th>What you will see</th><th>How to respond</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Attention span of two to three minutes per activity</td><td>Rotate every two to three minutes and always have the next one ready</td></tr>
+        <tr><td>Parallel play. They play alongside teammates, not with them</td><td>Small groups only. Everyone has a ball</td></tr>
+        <tr><td>Every child wants the ball at all times</td><td>One ball per player wherever possible. Lines create chaos</td></tr>
+        <tr><td>They learn by imitation and imagination</td><td>Be animated. Use vivid language: be a shark, protect your treasure</td></tr>
+        <tr><td>Easily frustrated by failure or conflict</td><td>Redirect quickly, praise constantly, keep your energy up</td></tr>
+        <tr><td>No consistent understanding of rules</td><td>Keep it to one or two rules. Reinforce by playing, not explaining</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sec">Managing Bantam players</h3>
+    <ul class="plain">
+      <li>Establish an attention signal early. A whistle pattern, a clap pattern, or a call and response.</li>
+      <li>Kneel down to their level when you talk to them. Physical presence matters at this age.</li>
+      <li>Transition fast between activities. Every second of dead time is lost.</li>
+      <li>Use first names constantly. It builds connection and it refocuses attention.</li>
+      <li>Celebrate everything. Great touch, great try, great hustle, great listening.</li>
+      <li>Expect chaos. It is developmentally normal. Redirect with energy, not frustration.</li>
+    </ul>
+
+    <h3 class="sec">Academy / U7-U8</h3>
+    <table>
+      <thead>
+        <tr><th>What you will see</th><th>How to respond</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Beginning to understand rules and structure</td><td>Introduce simple ideas like attacking side and defending side</td></tr>
+        <tr><td>Starting to play with teammates, not just near them</td><td>Encourage passing and reward it loudly when it happens</td></tr>
+        <tr><td>Can handle five to eight minute activity windows</td><td>Give them a clear goal or challenge inside each activity</td></tr>
+        <tr><td>Competitive. They care about the score</td><td>Keep score and channel it. Did your team improve from last round?</td></tr>
+        <tr><td>Can receive and apply one coaching point</td><td>One point per activity, maximum. More than that is noise</td></tr>
+        <tr><td>Beginning to self-regulate emotionally</td><td>Hold the line on sportsmanship and praise maturity when you see it</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sec">Managing Academy players</h3>
+    <ul class="plain">
+      <li>Set two or three clear expectations at the start. They can hold themselves to them.</li>
+      <li>Small-sided always. Four a side max, everyone involved every minute.</li>
+      <li>One coaching point per activity. Deliver it, reinforce it, move on.</li>
+      <li>Use the freeze sparingly. Stop play, make the point in 30 seconds, restart.</li>
+      <li>Push them to talk to each other. Tell your teammate where you want the ball.</li>
+      <li>After the session, ask what they learned. Their answers will surprise you.</li>
+    </ul>
+  </section>
+
+  <!-- ============ PART 3 ============ -->
+  <section class="part">
+    <div class="part-head">
+      <div class="num">03</div>
+      <div>
+        <h2>Running The Session</h2>
+        <p>The two models we use, then the activities we are going to play tonight.</p>
+      </div>
+    </div>
+
+    <h3 class="sec">Model 1: Play, Practice, Play</h3>
+    <p style="margin:0 0 12px;">Start with a game, coach what you actually see, then go back to the game. Players stay active, learning stays in context, and your coaching has visible relevance instead of being a lecture before the fun part.</p>
+
+    <div class="flow">
+      <div class="step">
+        <span class="n">Phase 1</span>
+        <h4>Play</h4>
+        <span class="dur">5 to 8 minutes</span>
+        <p>Free or lightly guided game. Watch what they can and cannot do. This is where you gather what to work on.</p>
+      </div>
+      <div class="step">
+        <span class="n">Phase 2</span>
+        <h4>Practice</h4>
+        <span class="dur">10 to 15 minutes</span>
+        <p>One or two game-like activities. Train the thing you just watched them struggle with. Build it up gradually.</p>
+      </div>
+      <div class="step">
+        <span class="n">Phase 3</span>
+        <h4>Play</h4>
+        <span class="dur">5 to 10 minutes</span>
+        <p>Back to the game so they can use it. Coach from the outside. Encourage, do not interrupt the flow.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><b>Why it works.</b> Kids do not learn by being told, they learn by doing. This keeps players on the ball for as much of the hour as possible while giving you a live picture of what actually needs coaching.</p>
+    </div>
+
+    <h3 class="sec">Model 2: Build it up, unopposed to opposed</h3>
+    <p style="margin:0 0 12px;">This is how you structure a single activity inside the Practice phase. Introduce it simply, then add pressure in three steps.</p>
+
+    <div class="ladder">
+      <div class="rung">
+        <h4>Step 1: Unopposed <em>Technique first</em></h4>
+        <p>The skill with no defender. Pure focus on doing it correctly. No pressure and no decisions yet.</p>
+        <p class="ex">Dribble through cones. Pass against a wall. Shoot at an empty goal.</p>
+      </div>
+      <div class="rung">
+        <h4>Step 2: Semi-opposed <em>Add a decision</em></h4>
+        <p>A passive or shadow defender. Now they have to read it and choose, but a mistake costs little. Technique will get sloppy. That is expected.</p>
+        <p class="ex">1v1 with a jog-only defender. A defender who can shadow but not tackle.</p>
+      </div>
+      <div class="rung">
+        <h4>Step 3: Fully opposed <em>Real pressure</em></h4>
+        <p>Live defender, full pressure, game conditions. Mistakes happen here and that is where it sticks.</p>
+        <p class="ex">1v1 live. Small-sided game. Match play.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><b>Do not skip to step 3.</b> Players need to feel success at each step before pressure goes on. Going straight to live pressure creates frustration and sloppy habits. The common shortcut is skipping steps 1 and 2 because it is "just rec." Even five unopposed minutes sets the tone and gives your coaching point something to attach to.</p>
+    </div>
+
+    <h3 class="sec">Say it simply</h3>
+    <p style="margin:0 0 4px;">Short phrases you call out while they play. Pick two or three per activity and repeat them all session.</p>
+    <div class="chips">
+      <span>"Little touches."</span>
+      <span>"Eyes up."</span>
+      <span>"Stop it, go again."</span>
+      <span>"Find space."</span>
+      <span>"Nice, do it again."</span>
+    </div>
+
+    <h3 class="sec">Bantam activities / U4-U6</h3>
+    <div class="acts">
+      <div class="act">
+        <span class="who">Bantam U4-U6</span>
+        <h4>Simon Says Dribbling</h4>
+        <p><strong>Setup</strong>Every player has a ball in a 15x15 yard grid. Everyone dribbles around and you call out a body part to stop the ball with. Head, foot, heel, knee.</p>
+        <p><strong>Coaching points</strong>Close control, head up while dribbling, stay balanced.</p>
+        <p><strong>Make it fun</strong>"Simon says stop it with your ear." Then ask them, is your ball talking to you?</p>
+      </div>
+      <div class="act">
+        <span class="who">Bantam U4-U6</span>
+        <h4>Popcorn</h4>
+        <p><strong>Setup</strong>Every player with a ball. You kneel inside a 5x5 cone box. Players bring you the ball, you throw it up and away, and they have to chase it down and bring it back to the popcorn machine.</p>
+        <p><strong>Coaching points</strong>Control on the move, sharp turns, spatial awareness.</p>
+        <p><strong>Progression</strong>Bring it back in hands, then rolling it with hands, then dribbling.</p>
+      </div>
+      <div class="act">
+        <span class="who">Bantam U4-U6</span>
+        <h4>Shark Attack</h4>
+        <p><strong>Setup</strong>Players are fish and dribble from one end of the grid to the other. The shark, you or a chosen player, tries to kick balls out of the grid.</p>
+        <p><strong>Coaching points</strong>Shield with your body, look around, keep the first touch close.</p>
+        <p><strong>Progression</strong>Add a second shark. Anyone who loses their ball becomes a shark. Last fish wins.</p>
+      </div>
+      <div class="act">
+        <span class="who">Bantam U4-U6</span>
+        <h4>1v1 To Mini Goals</h4>
+        <p><strong>Setup</strong>Pair players on either side of a small 5 yard goal. Every pair plays at the same time. Rotate pairs every two minutes.</p>
+        <p><strong>Coaching points</strong>Scoring, defending one on one, deciding under a bit of pressure.</p>
+        <p><strong>Progression</strong>Let them play with almost no interruptions. Celebrate goals loudly. Superman versus Batman works every time.</p>
+      </div>
+    </div>
+
+    <h3 class="sec">Academy activities / U7-U8</h3>
+    <div class="acts">
+      <div class="act">
+        <span class="who">Academy U7-U8</span>
+        <h4>Stop And Go, Turns</h4>
+        <p><strong>Setup</strong>Every player has a ball in a 15x15 yard grid. They dribble freely, and on your signal they stop the ball with the sole of the foot and hold it still and balanced. On "go" they are off again.</p>
+        <p><strong>Coaching points</strong>Find the space before you move into it. Head up, small touches, ball close.</p>
+        <p><strong>Progression</strong>Every "go" starts with a turn or a move. Pullback, inside cut, outside hook.</p>
+      </div>
+      <div class="act">
+        <span class="who">Academy U7-U8</span>
+        <h4>Gates</h4>
+        <p><strong>Setup</strong>Eight to ten small cone gates across a 20x20 yard grid. A point every time a player dribbles through a gate. Play 60 to 90 seconds, then rest.</p>
+        <p><strong>Coaching points</strong>Dribbling in different directions, scanning ahead, ball mastery moves.</p>
+        <p><strong>Progression</strong>Left foot only. Add a defender who can close a gate by standing in it. Run it as a team race.</p>
+      </div>
+      <div class="act">
+        <span class="who">Academy U7-U8</span>
+        <h4>1v1 Counter Attack</h4>
+        <p><strong>Setup</strong>One player attacks a small goal against an active defender. If the defender wins it, they turn and attack the goal at the other end. Reset after each rep and swap roles.</p>
+        <p><strong>Coaching points</strong>Attacking, take the defender on and shoot early when there is space. Defending, be patient, do not dive in, transition fast.</p>
+        <p><strong>Progression</strong>Shrink the grid. Add a five second limit to shoot. Two touch max for the attacker.</p>
+      </div>
+      <div class="act">
+        <span class="who">Academy U7-U8</span>
+        <h4>2v2 Transition</h4>
+        <p><strong>Setup</strong>Two teams of two in a small grid with a goal at each end. When the defending pair wins the ball they attack the opposite goal straight away. No resets, play is continuous. Rotate every two to three minutes.</p>
+        <p><strong>Coaching points</strong>Win it and go. Talk to your partner. When to pass and when to drive.</p>
+        <p><strong>Progression</strong>Three seconds to shoot after winning it. Expand to 3v3. Add a neutral who always plays with whoever has the ball.</p>
+      </div>
+    </div>
+
+    <h3 class="sec">What a session looks like end to end</h3>
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>What it looks like</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Play</td><td>Free dribbling game. Watch who can turn, who holds it too long, who avoids pressure</td></tr>
+        <tr><td>Practice, unopposed</td><td>Cone dribbling. One coaching point: use the inside of your foot to turn</td></tr>
+        <tr><td>Practice, semi-opposed</td><td>Same activity with a shadow defender. Now they choose when and where to turn</td></tr>
+        <tr><td>Practice, fully opposed</td><td>1v1 or 2v2 with live pressure. Coach from the outside, freeze sparingly</td></tr>
+        <tr><td>Play</td><td>Small-sided scrimmage. Let them apply it. Encourage, do not instruct</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ PART 4 ============ -->
+  <section class="part">
+    <div class="part-head">
+      <div class="num">04</div>
+      <div>
+        <h2>Parents, Problems, And People</h2>
+        <p>The part of coaching that has nothing to do with soccer.</p>
+      </div>
+    </div>
+
+    <h3 class="sec">The sideline</h3>
+    <ul class="plain">
+      <li>Set it at the first session: positive cheering only, no coaching or instructing from the sideline.</li>
+      <li>Split the sides clearly. Coaches and players on the field side, families opposite.</li>
+      <li>Your composure under pressure is what players and families take home with them.</li>
+    </ul>
+
+    <h3 class="sec">When it goes sideways</h3>
+    <div class="sits">
+      <div class="sit">
+        <h4>Conflict on the field</h4>
+        <p>Stop play calmly. Separate players if you need to. Handle it quietly, not publicly, and get back to playing quickly. Long stops let emotion build at this age.</p>
+      </div>
+      <div class="sit">
+        <h4>Injury</h4>
+        <p>Player first. Do not move them if you suspect a head, neck, or serious impact. Talk to the parent calmly. Contact the club for anything beyond a minor bump.</p>
+      </div>
+      <div class="sit">
+        <h4>Weather and lightning</h4>
+        <p>Stop and move to shelter immediately. Do not wait to see whether it passes. No game is worth the risk. Know the club policy before you arrive.</p>
+      </div>
+      <div class="sit">
+        <h4>A player shuts down</h4>
+        <p>Move them out of the situation without making it a scene. Sit beside them, not in front of them. Give them a minute before you talk. Bring in a parent if you need to.</p>
+      </div>
+    </div>
+
+    <h3 class="sec">Questions we will talk through tonight</h3>
+    <ul class="plain">
+      <li>What does a good session look like to you?</li>
+      <li>What worries you most about managing this age group?</li>
+      <li>When have you seen a coach give players way too much information at once?</li>
+      <li>What do you do with a player who checks out or acts up?</li>
+    </ul>
+  </section>
+
+  <footer class="takeaway">
+    <p>If every kid wants to<br>come back next week,<br><em>you did the job.</em></p>
+    <div class="who">
+      <b>Questions</b>
+      CYA Soccer Program Director<br>
+      Dylan Sutherland
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
