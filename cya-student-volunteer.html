@@ -346,6 +346,19 @@
       </div>
     </div>
   </div>
+  <div class="section-block" id="lookup">
+    <h2>Already Signed Up?</h2>
+    <div class="cat-sub">Check your status, change, or cancel.</div>
+    <div class="form-card">
+      <p style="margin-bottom:16px;">Every confirmation email we send has a link to your signup. If you can't find it, enter your email below and we'll send it again.</p>
+      <div class="field" style="margin-bottom:14px;">
+        <label for="lookupEmail">Your email</label>
+        <input type="email" id="lookupEmail" autocomplete="email" placeholder="you@example.com">
+      </div>
+      <button type="button" class="ghost-btn" id="lookupBtn">Send me my link</button>
+      <div id="lookupStatus" class="form-status" role="status" aria-live="polite"></div>
+    </div>
+  </div>
 
 </div>
 
@@ -681,6 +694,59 @@ $('signUpAgain').addEventListener('click', function(){
   updateSelectionNote();
   loadOpportunities();
   $('register').scrollIntoView({ behavior:'smooth', block:'start' });
+});
+
+/* ---------------------------------------------------------------
+   "Send me my link" — for students who lost their confirmation email.
+   The response is intentionally identical whether or not the address
+   is on file, so this can't be used to find out who has signed up.
+   --------------------------------------------------------------- */
+var lookupBtn = $('lookupBtn'), lookupStatus = $('lookupStatus'), lookupEmail = $('lookupEmail');
+
+var DONE_MSG = "If that email is on file, we've just sent your signup link to it. " +
+               "Check your inbox, and your spam folder if it isn't there in a few minutes.";
+
+lookupBtn.addEventListener('click', function(){
+  var value = (lookupEmail.value || '').trim();
+  lookupStatus.className = 'form-status';
+
+  if (!value || value.indexOf('@') === -1){
+    lookupStatus.textContent = 'Please enter a valid email address.';
+    lookupStatus.className = 'form-status error';
+    return;
+  }
+
+  if (!CONFIG.SCRIPT_URL){
+    lookupStatus.textContent = DONE_MSG;
+    return;
+  }
+
+  lookupBtn.disabled = true;
+  lookupBtn.textContent = 'Sending…';
+
+  apiPost('resend', { email: value })
+    .then(function(res){
+      lookupBtn.disabled = false;
+      lookupBtn.textContent = 'Send me my link';
+      if (res && res.ok){
+        lookupStatus.textContent = DONE_MSG;
+        lookupEmail.value = '';
+      } else {
+        lookupStatus.textContent = (res && res.error) || 'Something went wrong. Please try again.';
+        lookupStatus.className = 'form-status error';
+      }
+    })
+    .catch(function(){
+      lookupBtn.disabled = false;
+      lookupBtn.textContent = 'Send me my link';
+      lookupStatus.innerHTML = 'We couldn\'t send that just now. Please try again, or email ' +
+        '<a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL + '</a>.';
+      lookupStatus.className = 'form-status error';
+    });
+});
+
+lookupEmail.addEventListener('keydown', function(e){
+  if (e.key === 'Enter'){ e.preventDefault(); lookupBtn.click(); }
 });
 
 /* ---------------------------------------------------------------
