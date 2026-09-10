@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYA Soccer — Student Volunteer &amp; Service Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-950:#1B0F38;
+    --purple-700:#592B82;
+    --purple-500:#8A5CB8;
+    --cream-50:#FAF7FB;
+    --ink-900:#221238;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', sans-serif; background:var(--cream-50); color:var(--ink-900); }
+  a{color:var(--purple-700); text-decoration:none;}
+  a:hover{ text-decoration:underline; text-underline-offset:2px; }
+  ul{list-style:none;}
+  h1,h2,h3{font-family:'League Spartan', sans-serif;}
+
+  .topbar{ background:var(--purple-950); padding:18px 24px; border-bottom:1px solid rgba(255,255,255,.14); }
+  .topbar .wrap{ max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .topbar a{ color:rgba(255,255,255,.85); font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:6px; transition:color .15s; padding:9px 4px; text-decoration:none; }
+  .topbar a:hover{ color:var(--white); text-decoration:none; }
+  .topbar svg{ width:14px; height:14px; }
+
+  .hero{ position:relative; background:linear-gradient(112deg, var(--purple-950) 0%, var(--purple-950) 58%, var(--purple-700) 58%, var(--purple-700) 100%); padding:80px 24px 60px; text-align:center; }
+  .hero .eyebrow{ font-family:'League Spartan', sans-serif; font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.7); }
+  .division-title{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:64px; line-height:1; letter-spacing:.02em; text-transform:uppercase; margin-top:16px; overflow-wrap:break-word; }
+  .hero .sub{ margin-top:14px; font-size:15px; font-weight:500; color:rgba(255,255,255,.8); max-width:520px; margin-left:auto; margin-right:auto; }
+
+  .content{ max-width:760px; margin:0 auto; padding:60px 24px 20px; }
+  .section-block{ margin-bottom:44px; }
+  .content h2{ color:var(--purple-700); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:28px; letter-spacing:.02em; margin-bottom:6px; }
+  .content .cat-sub{ font-size:13.5px; color:#6b5b7a; margin-bottom:18px; }
+  .content p{ font-family:'Inter', sans-serif; font-size:14.5px; line-height:1.7; margin-bottom:12px; color:#3d2e4d; }
+  .content p:last-child{ margin-bottom:0; }
+  .content strong{ color:var(--ink-900); }
+
+  .vp-deck{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 0; }
+  .vp-pill{ font-family:'League Spartan', sans-serif; font-weight:800; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--purple-700); background:var(--white); border:1px solid #E5DCEC; padding:6px 12px 4px; }
+
+  .vp-list{ display:flex; flex-direction:column; gap:14px; margin-top:18px; }
+  .opp-item{ position:relative; background:var(--white); border:1px solid #E5DCEC; border-left:3px solid var(--purple-700); padding:22px 24px 20px; }
+  .opp-item.is-filled{ border-left-color:#c9bdd6; }
+  .opp-tag{ display:inline-block; font-family:'League Spartan', sans-serif; font-weight:800; font-size:11px; letter-spacing:.12em; text-transform:uppercase; background:var(--purple-700); color:var(--white); padding:5px 10px 3px; margin-bottom:12px; }
+  .opp-item.is-filled .opp-tag{ background:#8a7a97; }
+  .opp-item h3{ font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:26px; line-height:1.05; letter-spacing:.02em; text-transform:uppercase; color:var(--ink-900); margin-bottom:10px; }
+  .opp-item p{ font-family:'Inter', sans-serif; font-size:14px; line-height:1.7; color:#3d2e4d; margin-bottom:0; }
+  .opp-when{ margin-top:14px; padding-top:12px; border-top:1px solid #EFE8F4; font-size:13.5px; line-height:1.6; color:#3d2e4d; }
+  .opp-when strong{ color:var(--ink-900); }
+  .opp-loc{ display:flex; align-items:flex-start; gap:8px; margin-top:8px; font-size:13.5px; line-height:1.6; color:#3d2e4d; }
+  .opp-loc svg{ width:15px; height:15px; flex-shrink:0; margin-top:2px; color:var(--purple-700); }
+  .opp-meta{ margin-top:12px; padding:10px 13px; background:#F6F1FA; border:1px solid #EFE8F4; display:flex; flex-wrap:wrap; gap:16px; }
+  .opp-meta-row{ font-family:'Inter', sans-serif; font-size:13px; color:#3d2e4d; }
+  .opp-meta-row b{ display:block; font-family:'League Spartan', sans-serif; font-weight:800; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--purple-700); margin-bottom:2px; }
+  .opp-details{ margin-top:14px; }
+  .opp-details b{ display:block; font-family:'League Spartan', sans-serif; font-weight:800; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-900); margin-bottom:6px; }
+  .opp-details ul{ display:flex; flex-direction:column; gap:5px; }
+  .opp-details li{ font-size:13.5px; line-height:1.6; color:#3d2e4d; padding-left:14px; position:relative; }
+  .opp-details li::before{ content:''; position:absolute; left:0; top:8px; width:5px; height:5px; background:var(--purple-500); }
+  .opp-note{ margin-top:10px; font-size:12.5px; font-style:italic; color:#6b5b7a; }
+  .opp-footer{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:16px; padding-top:14px; border-top:1px solid #EFE8F4; }
+  .opp-status{ font-family:'League Spartan', sans-serif; font-weight:800; font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--purple-700); }
+  .opp-status.is-filled{ color:#8a7a97; }
+  .opp-status .sub{ display:block; font-weight:600; font-size:11px; letter-spacing:.04em; text-transform:none; color:#8a7a97; margin-top:3px; }
+  .opp-signup-btn{ display:inline-flex; align-items:center; gap:6px; background:var(--purple-700); color:var(--white); border:none; font-family:'League Spartan', sans-serif; font-weight:800; font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; padding:11px 20px; cursor:pointer; transition:opacity .15s; }
+  .opp-signup-btn:hover{ opacity:.85; }
+  .opp-signup-btn.is-filled{ background:#8a7a97; }
+  .opp-signup-btn svg{ width:12px; height:12px; }
+
+  .empty-state{ background:#F6F1FA; border:1px solid #EFE8F4; padding:20px 22px; font-size:14px; line-height:1.7; color:#3d2e4d; }
+  .loading{ font-size:14px; color:#8a7a97; padding:12px 2px; }
+
+  .form-card{ background:var(--white); border:1px solid #E5DCEC; padding:28px 26px; margin-top:18px; }
+  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .field{ margin-bottom:18px; }
+  .field.full{ grid-column:1 / -1; }
+  .field label{ display:block; font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; color:var(--ink-900); margin-bottom:6px; }
+  .field .req{ color:var(--purple-700); }
+  .field .hint{ font-size:12px; color:#8a7a97; margin-top:5px; }
+  input[type=text], input[type=email], input[type=tel], input[type=number], select, textarea{
+    width:100%; font-family:'Inter', sans-serif; font-size:14px; color:var(--ink-900);
+    border:1px solid #D9CEE4; background:var(--white); padding:11px 12px; border-radius:3px;
+  }
+  input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible{ outline:2px solid var(--purple-500); outline-offset:2px; }
+  textarea{ resize:vertical; min-height:80px; font-family:'Inter', sans-serif; }
+  fieldset{ border:none; padding:0; }
+  fieldset legend{ font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; color:var(--ink-900); margin-bottom:8px; padding:0; }
+  .check-grid{ display:flex; flex-wrap:wrap; gap:10px 18px; }
+  .check-row{ display:flex; align-items:center; gap:8px; font-size:13.5px; color:#3d2e4d; }
+  .check-row input{ width:auto; accent-color:var(--purple-700); }
+  .radio-row{ display:flex; flex-wrap:wrap; gap:18px; }
+
+  .info-box{ background:#F6F1FA; border:1px solid #EFE8F4; padding:14px 16px; font-size:13px; line-height:1.6; color:#3d2e4d; margin:6px 0 18px; }
+  .info-box b{ color:var(--ink-900); }
+
+  .consent-box{ background:#F6F1FA; border:1px solid #EFE8F4; padding:16px 18px; display:flex; align-items:flex-start; gap:10px; margin-bottom:20px; }
+  .consent-box input{ width:auto; margin-top:3px; accent-color:var(--purple-700); }
+  .consent-box label{ font-size:13.5px; line-height:1.6; color:#3d2e4d; font-family:'Inter', sans-serif; font-weight:400; }
+
+  .submit-btn{ display:inline-block; background:var(--purple-700); color:var(--white); border:none; font-family:'League Spartan', sans-serif; font-weight:800; font-size:14px; letter-spacing:.04em; text-transform:uppercase; padding:14px 30px; cursor:pointer; transition:opacity .15s; }
+  .submit-btn:hover{ opacity:.88; }
+  .submit-btn:disabled{ opacity:.55; cursor:not-allowed; }
+  .ghost-btn{ display:inline-block; background:none; color:var(--purple-700); border:1px solid #D9CEE4; font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; padding:12px 22px; cursor:pointer; transition:background .15s; }
+  .ghost-btn:hover{ background:#F6F1FA; }
+  .danger-btn{ display:inline-block; background:none; color:#a23b3b; border:1px solid #e0c2c2; font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; padding:12px 22px; cursor:pointer; transition:background .15s; }
+  .danger-btn:hover{ background:#fbf3f3; }
+
+  .form-status{ margin-top:14px; font-size:13.5px; line-height:1.6; }
+  .form-status.error{ color:#a23b3b; }
+
+  .panel{ background:var(--white); border:1px solid #E5DCEC; border-left:3px solid var(--purple-700); padding:30px 28px; margin-top:18px; }
+  .panel.warn{ border-left-color:#c9bdd6; }
+  .panel h3{ font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:28px; color:var(--purple-700); letter-spacing:.02em; margin-bottom:10px; }
+  .panel p{ font-size:14.5px; line-height:1.7; color:#3d2e4d; margin-bottom:14px; }
+  .panel p:last-child{ margin-bottom:0; }
+  .panel-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+
+  .status-strip{ display:flex; flex-wrap:wrap; gap:20px; padding:16px 18px; background:#F6F1FA; border:1px solid #EFE8F4; margin-bottom:18px; }
+  .status-strip div b{ display:block; font-family:'League Spartan', sans-serif; font-weight:800; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--purple-700); margin-bottom:3px; }
+  .status-strip div span{ font-size:14.5px; color:var(--ink-900); font-weight:600; }
+
+  .cta-block{ background:var(--purple-950); margin:0; padding:52px 24px; text-align:center; }
+  .cta-block .wrap{ max-width:600px; margin:0 auto; }
+  .cta-block h3{ color:var(--white); font-family:'Bebas Neue', sans-serif; font-weight:400; font-size:34px; letter-spacing:.02em; margin-bottom:10px; }
+  .cta-block p{ color:rgba(255,255,255,.82); font-size:14.5px; font-weight:500; margin-bottom:22px; }
+  .cta-btn{ display:inline-block; background:var(--white); color:var(--purple-950); font-family:'League Spartan', sans-serif; font-weight:700; font-size:14px; letter-spacing:.03em; text-transform:uppercase; padding:14px 30px; border-radius:4px; transition:opacity .15s; text-decoration:none; }
+  .cta-btn:hover{ opacity:.85; text-decoration:none; }
+
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+
+  @media (max-width:640px){
+    .hero{ padding:36px 20px 40px; }
+    .division-title{ font-size:38px; }
+    .content{ padding:44px 20px 20px; }
+    .form-grid{ grid-template-columns:1fr; }
+    .form-card{ padding:22px 18px; }
+    .opp-item{ padding:20px 18px 18px; }
+    .section-block{ margin-bottom:34px; }
+    .opp-footer{ flex-direction:column; align-items:flex-start; }
+    .opp-signup-btn{ width:100%; justify-content:center; }
+    .panel-actions button{ width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.cyasoccer.org" target="_top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">CYA Soccer Community Service</span>
+  <h1 class="division-title" id="heroTitle">Volunteer &amp; Service Hours</h1>
+  <p class="sub" id="heroSub">Earn service hours and help make CYA games and events run smoothly. Open to middle and high school students.</p>
+</section>
+
+<!-- ============ MANAGE VIEW (shown when a ?token= link is opened) ============ -->
+<div class="content" id="manageView" style="display:none;">
+  <div class="section-block">
+    <h2 id="manageHeading">Your Signup</h2>
+    <div class="cat-sub" id="manageSub">Review, cancel, or switch to a different opportunity.</div>
+    <div id="manageBody"><div class="loading">Loading your signup…</div></div>
+  </div>
+</div>
+
+<!-- ============ MAIN VIEW ============ -->
+<div class="content" id="mainView">
+
+  <div class="section-block">
+    <p>CYA Soccer offers a range of volunteer opportunities for middle and high school students, from helping run game days to supporting our coaches at practice. Many of these opportunities count toward school or organization service hour requirements, and we're glad to sign off on hours you complete with us.</p>
+    <p>Sign up for a specific opportunity below, or join our general interest list so we can reach out when something opens up that fits your schedule.</p>
+    <div class="vp-deck">
+      <span class="vp-pill">Middle &amp; High School Students</span>
+      <span class="vp-pill">Rolling Enrollment</span>
+      <span class="vp-pill">Hours Verification Available</span>
+    </div>
+  </div>
+
+  <div class="section-block" id="opportunities">
+    <h2>Current Opportunities</h2>
+    <div class="cat-sub">Updated as new opportunities come up. Check back throughout the season.</div>
+    <div id="oppList" class="vp-list"><div class="loading">Loading opportunities…</div></div>
+  </div>
+
+  <div class="section-block" id="register">
+    <h2>Register Your Interest</h2>
+    <div class="cat-sub">Takes about three minutes.</div>
+
+    <div id="formWrap">
+      <form id="volunteerForm" class="form-card" novalidate>
+
+        <div class="field full">
+          <label for="oppSelect">I'm signing up for</label>
+          <select id="oppSelect" name="opportunityId">
+            <option value="GENERAL">General interest list (no specific opportunity yet)</option>
+          </select>
+        </div>
+
+        <div class="info-box" id="selectionNote">
+          <b>Please note:</b> joining the general interest list does not guarantee a specific opportunity. We'll reach out by email as opportunities come up that match your availability.
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="studentName">Student name <span class="req">*</span></label>
+            <input type="text" id="studentName" name="studentName" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="parentName">Parent/guardian name</label>
+            <input type="text" id="parentName" name="parentName" autocomplete="off">
+            <div class="hint">If a parent or guardian is completing this for the student</div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+            <div class="hint">Confirmations and reminders go here</div>
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel">
+          </div>
+
+          <div class="field">
+            <label for="age">Student age <span class="req">*</span></label>
+            <input type="number" id="age" name="age" min="10" max="19" required>
+          </div>
+          <div class="field">
+            <label for="grade">Grade <span class="req">*</span></label>
+            <select id="grade" name="grade" required>
+              <option value="">Select grade</option>
+              <option>6th grade</option>
+              <option>7th grade</option>
+              <option>8th grade</option>
+              <option>9th grade</option>
+              <option>10th grade</option>
+              <option>11th grade</option>
+              <option>12th grade</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="school">School <span class="req">*</span></label>
+            <input type="text" id="school" name="school" required>
+          </div>
+
+          <div class="field">
+            <label for="hoursNeeded">Approx. service hours needed</label>
+            <input type="number" id="hoursNeeded" name="hoursNeeded" min="0">
+          </div>
+          <div class="field">
+            <label>Preferred contact method</label>
+            <div class="radio-row" style="margin-top:11px;">
+              <label class="check-row"><input type="radio" name="preferredContact" value="Email" checked> Email</label>
+              <label class="check-row"><input type="radio" name="preferredContact" value="Phone"> Phone</label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <fieldset>
+              <legend>General availability</legend>
+              <div class="check-grid">
+                <label class="check-row"><input type="checkbox" name="availability" value="Weekday afternoons"> Weekday afternoons</label>
+                <label class="check-row"><input type="checkbox" name="availability" value="Weekday evenings"> Weekday evenings</label>
+                <label class="check-row"><input type="checkbox" name="availability" value="Saturdays"> Saturdays</label>
+                <label class="check-row"><input type="checkbox" name="availability" value="Sundays"> Sundays</label>
+                <label class="check-row"><input type="checkbox" name="availability" value="School breaks/summer"> School breaks/summer</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field full">
+            <fieldset>
+              <legend>Types of opportunities you're interested in</legend>
+              <div class="check-grid">
+                <label class="check-row"><input type="checkbox" name="interests" value="Coaching assistant"> Coaching assistant</label>
+                <label class="check-row"><input type="checkbox" name="interests" value="Event day helper"> Event day helper</label>
+                <label class="check-row"><input type="checkbox" name="interests" value="Field & equipment setup"> Field &amp; equipment setup</label>
+                <label class="check-row"><input type="checkbox" name="interests" value="Referee / assistant referee"> Referee / assistant referee</label>
+                <label class="check-row"><input type="checkbox" name="interests" value="Administrative / office support"> Administrative / office support</label>
+                <label class="check-row"><input type="checkbox" name="interests" value="Photography / social media"> Photography / social media</label>
+                <label class="check-row"><input type="checkbox" name="interests" value="Other"> Other</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field full">
+            <label for="experience">Relevant experience</label>
+            <textarea id="experience" name="experience" placeholder="Coaching, refereeing, prior volunteer work, or anything else worth knowing"></textarea>
+          </div>
+
+          <div class="field full">
+            <label>Do you need official documentation or a signature verifying your hours? <span class="req">*</span></label>
+            <div class="radio-row" style="margin-top:6px;">
+              <label class="check-row"><input type="radio" name="needsVerification" value="Yes" required> Yes</label>
+              <label class="check-row"><input type="radio" name="needsVerification" value="No" required> No</label>
+            </div>
+            <div class="hint">If yes, we'll give you a signed hours log after you complete your time with us.</div>
+          </div>
+
+          <div class="field full">
+            <label for="notes">Additional notes</label>
+            <textarea id="notes" name="notes" placeholder="Anything else we should know"></textarea>
+          </div>
+        </div>
+
+        <div class="consent-box">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I understand that signing up does not guarantee placement, that spots are limited, and that CYA Soccer will contact me by email or phone about this signup.</label>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
+        <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <div id="successPanel" class="panel" style="display:none;" role="status" aria-live="polite">
+      <h3 id="successHeading">You're all set</h3>
+      <p id="successMessage"></p>
+      <p id="successSecondary" style="display:none;"></p>
+      <div class="panel-actions">
+        <button type="button" class="ghost-btn" id="signUpAgain">Sign up for something else</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <div class="wrap">
+    <h3>Questions About Volunteering?</h3>
+    <p>Reach out any time, we're happy to help you find the right fit.</p>
+    <a class="cta-btn" href="mailto:cyadylan@chantillyyouth.org">Email Dylan Sutherland</a>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------------------------------------------------------
+   CONFIG — paste your Apps Script Web App /exec URL here.
+   Leave blank to run on the sample data below for design review.
+   --------------------------------------------------------------- */
+var CONFIG = {
+  SCRIPT_URL: "",
+  CONTACT_EMAIL: "cyadylan@chantillyyouth.org"
+};
+
+var GENERAL_ID = "GENERAL";
+
+/* Sample data used only when SCRIPT_URL is blank. */
+var SAMPLE = [
+  { id:"OPP-001", title:"Fall Festival Game Day Helper", category:"Event Day Help",
+    description:"Help welcome families and keep things running smoothly at our Fall Festival game day.",
+    date:"Saturday, October 4, 2026", start:"8:00 AM", end:"11:00 AM",
+    location:"CYA Fieldhouse, 14810 Murdock Street, Chantilly, VA",
+    volunteersNeeded:6, spotsFilled:4, waitlistCount:0, hours:3, minAgeGrade:"6th grade or older",
+    responsibilities:["Greet families at check-in","Help set up team tables and coolers","Hand out event flyers","Assist with cleanup at the end"],
+    specialInstructions:"Wear closed-toe shoes, we'll be on turf and grass." },
+  { id:"OPP-002", title:"Academy Coaching Assistant — Saturdays", category:"Coaching Support",
+    description:"Support a CYA Academy (U7/U8) coach during Saturday sessions.",
+    date:"Ongoing, Saturdays through November", start:"9:00 AM", end:"12:00 PM",
+    location:"Assigned CYA field (confirmed at signup)",
+    volunteersNeeded:4, spotsFilled:4, waitlistCount:2, hours:3,
+    minAgeGrade:"8th grade or older, some soccer experience helpful",
+    responsibilities:["Help run warm-up activities for young players","Set up cones and small-sided game grids","Support the lead coach with equipment"],
+    specialInstructions:"" },
+  { id:"OPP-003", title:"Equipment Room Organization", category:"Behind the Scenes",
+    description:"Help sort and organize CYA's uniform and training equipment inventory.",
+    date:"Flexible, by appointment", start:"", end:"",
+    location:"CYA Fieldhouse storage room",
+    volunteersNeeded:2, spotsFilled:0, waitlistCount:0, hours:2, minAgeGrade:"No age minimum",
+    responsibilities:["Sort and count uniforms and training gear","Organize storage shelves","Flag damaged equipment for replacement"],
+    specialInstructions:"A good option if you need hours quickly and have a flexible schedule." }
+];
+
+/* ---------------------------------------------------------------
+   Element handles
+   --------------------------------------------------------------- */
+var $ = function(id){ return document.getElementById(id); };
+var mainView = $('mainView'), manageView = $('manageView'), manageBody = $('manageBody');
+var oppListEl = $('oppList'), oppSelect = $('oppSelect'), selectionNote = $('selectionNote');
+var form = $('volunteerForm'), formWrap = $('formWrap'), formStatus = $('formStatus'), submitBtn = $('submitBtn');
+var successPanel = $('successPanel'), successHeading = $('successHeading');
+var successMessage = $('successMessage'), successSecondary = $('successSecondary');
+
+var opportunities = [];
+var submitting = false;
+
+/* ---------------------------------------------------------------
+   Transport. POST bodies are sent as text/plain on purpose: it keeps
+   the request "simple" so the browser skips the CORS preflight that
+   Apps Script cannot answer. The script reads the raw body either way.
+   --------------------------------------------------------------- */
+function apiGet(params){
+  var qs = Object.keys(params).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+  }).join('&');
+  return fetch(CONFIG.SCRIPT_URL + '?' + qs, { method:'GET' })
+    .then(function(r){ return r.json(); });
+}
+
+function apiPost(action, payload){
+  return fetch(CONFIG.SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action: action, payload: payload })
+  }).then(function(r){ return r.json(); });
+}
+
+function esc(v){
+  return String(v == null ? '' : v)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+/* ---------------------------------------------------------------
+   Rendering opportunities
+   --------------------------------------------------------------- */
+function pinIcon(){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-7.58 7-12.5S15.87 2 12 2 5 4.58 5 9.5 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+}
+function arrowIcon(){
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>';
+}
+function whenLine(o){
+  return (o.start && o.end) ? esc(o.date) + ' &middot; ' + esc(o.start) + '&ndash;' + esc(o.end) : esc(o.date);
+}
+
+function renderOpportunities(list){
+  opportunities = list || [];
+  oppListEl.innerHTML = '';
+  oppSelect.innerHTML = '<option value="' + GENERAL_ID + '">General interest list (no specific opportunity yet)</option>';
+
+  if (!opportunities.length){
+    oppListEl.innerHTML = '<div class="empty-state">No specific opportunities are posted right now. ' +
+      'Join the interest list below and we\'ll email you as soon as something matches your availability.</div>';
+    return;
+  }
+
+  opportunities.forEach(function(o){
+    var remaining = Math.max(0, (o.volunteersNeeded || 0) - (o.spotsFilled || 0));
+    var filled = remaining <= 0;
+    var waiting = o.waitlistCount || 0;
+
+    var card = document.createElement('div');
+    card.className = 'opp-item' + (filled ? ' is-filled' : '');
+
+    var statusHtml = filled
+      ? 'Full' + (waiting ? '<span class="sub">' + waiting + ' on the waitlist</span>' : '')
+      : remaining + ' spot' + (remaining === 1 ? '' : 's') + ' remaining';
+
+    card.innerHTML =
+      '<span class="opp-tag">' + esc(o.category) + '</span>' +
+      '<h3>' + esc(o.title) + '</h3>' +
+      '<p>' + esc(o.description) + '</p>' +
+      '<div class="opp-when"><strong>When:</strong> ' + whenLine(o) + '</div>' +
+      '<div class="opp-loc">' + pinIcon() + '<span>' + esc(o.location) + '</span></div>' +
+      '<div class="opp-meta">' +
+        '<div class="opp-meta-row"><b>Service Hours</b>' + esc(o.hours) + '</div>' +
+        '<div class="opp-meta-row"><b>Minimum</b>' + esc(o.minAgeGrade) + '</div>' +
+      '</div>' +
+      (o.responsibilities && o.responsibilities.length
+        ? '<div class="opp-details"><b>What you\'ll do</b><ul>' +
+          o.responsibilities.map(function(r){ return '<li>' + esc(r) + '</li>'; }).join('') +
+          '</ul>' + (o.specialInstructions ? '<p class="opp-note">' + esc(o.specialInstructions) + '</p>' : '') +
+          '</div>'
+        : '') +
+      '<div class="opp-footer">' +
+        '<span class="opp-status' + (filled ? ' is-filled' : '') + '">' + statusHtml + '</span>' +
+        '<button type="button" class="opp-signup-btn' + (filled ? ' is-filled' : '') + '" data-id="' + esc(o.id) + '">' +
+          (filled ? 'Join Waitlist' : 'Sign Up') + ' ' + arrowIcon() +
+        '</button>' +
+      '</div>';
+
+    oppListEl.appendChild(card);
+
+    var opt = document.createElement('option');
+    opt.value = o.id;
+    opt.textContent = o.title + (filled ? ' — waitlist' : ' — ' + remaining + ' left');
+    oppSelect.appendChild(opt);
+  });
+
+  oppListEl.querySelectorAll('.opp-signup-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      oppSelect.value = btn.getAttribute('data-id');
+      updateSelectionNote();
+      $('register').scrollIntoView({ behavior:'smooth', block:'start' });
+      setTimeout(function(){ $('studentName').focus(); }, 420);
+    });
+  });
+}
+
+/** Keeps the note under the dropdown honest about what will happen. */
+function updateSelectionNote(){
+  var id = oppSelect.value;
+  if (id === GENERAL_ID){
+    selectionNote.innerHTML = '<b>Please note:</b> joining the general interest list does not guarantee a specific ' +
+      'opportunity. We\'ll reach out by email as opportunities come up that match your availability.';
+    return;
+  }
+  var o = opportunities.filter(function(x){ return x.id === id; })[0];
+  if (!o){ selectionNote.innerHTML = ''; return; }
+
+  var remaining = Math.max(0, (o.volunteersNeeded || 0) - (o.spotsFilled || 0));
+  selectionNote.innerHTML = remaining > 0
+    ? '<b>Spot available.</b> Submitting this form confirms your spot and sends you a confirmation email.'
+    : '<b>This one is full.</b> You\'ll join the waitlist. If a spot opens up we\'ll email you, ' +
+      'in the order people joined, and hold it for you while you decide.';
+}
+
+function loadOpportunities(){
+  if (!CONFIG.SCRIPT_URL){ renderOpportunities(SAMPLE); return; }
+  apiGet({ action:'list' })
+    .then(function(res){ renderOpportunities(res.opportunities || []); })
+    .catch(function(){
+      oppListEl.innerHTML = '<div class="empty-state">We couldn\'t load the current opportunities just now. ' +
+        'Please refresh the page, or email <a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' +
+        CONFIG.CONTACT_EMAIL + '</a> and we\'ll help directly.</div>';
+    });
+}
+
+/* ---------------------------------------------------------------
+   Remember contact details so a returning student doesn't retype
+   --------------------------------------------------------------- */
+var CONTACT_FIELDS = ['studentName','parentName','email','phone','age','grade','school'];
+function prefillContact(){
+  try {
+    var saved = JSON.parse(localStorage.getItem('cyaVolunteerContact') || '{}');
+    CONTACT_FIELDS.forEach(function(id){ if (saved[id]) $(id).value = saved[id]; });
+  } catch(e){}
+}
+function saveContact(){
+  try {
+    var saved = {};
+    CONTACT_FIELDS.forEach(function(id){ saved[id] = $(id).value; });
+    localStorage.setItem('cyaVolunteerContact', JSON.stringify(saved));
+  } catch(e){}
+}
+
+/* ---------------------------------------------------------------
+   Submit
+   --------------------------------------------------------------- */
+function collectFormData(){
+  var fd = new FormData(form);
+  return {
+    opportunityId: fd.get('opportunityId'),
+    studentName: (fd.get('studentName') || '').trim(),
+    parentName: (fd.get('parentName') || '').trim(),
+    email: (fd.get('email') || '').trim(),
+    phone: (fd.get('phone') || '').trim(),
+    age: fd.get('age'),
+    grade: fd.get('grade'),
+    school: (fd.get('school') || '').trim(),
+    hoursNeeded: fd.get('hoursNeeded') || '',
+    preferredContact: fd.get('preferredContact'),
+    availability: fd.getAll('availability'),
+    interests: fd.getAll('interests'),
+    experience: (fd.get('experience') || '').trim(),
+    needsVerification: fd.get('needsVerification'),
+    notes: (fd.get('notes') || '').trim()
+  };
+}
+
+function showError(msg){
+  formStatus.innerHTML = msg;
+  formStatus.className = 'form-status error';
+  formStatus.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+function showSuccess(result, data){
+  var title = result.opportunityTitle || 'CYA Soccer';
+
+  if (data.opportunityId === GENERAL_ID){
+    successHeading.textContent = "You're on the list";
+    successMessage.textContent = "We'll email " + data.email +
+      " when an opportunity comes up that matches what you're looking for.";
+    successSecondary.textContent = "Check your inbox for a confirmation with a link you can use to update or remove your listing at any time.";
+  } else if (result.status === 'Waitlisted'){
+    successHeading.textContent = "You're on the waitlist";
+    successMessage.textContent = title + " is full right now, so you're on the waitlist" +
+      (result.waitlistPosition ? " at position " + result.waitlistPosition : "") + ".";
+    successSecondary.textContent = "If a spot opens up we'll email you and hold it while you decide. " +
+      "Your confirmation email has a link to check your place or switch to something else.";
+  } else {
+    successHeading.textContent = "You're signed up";
+    successMessage.textContent = "Your spot for " + title + " is confirmed. A confirmation email is on its way to " + data.email + ".";
+    successSecondary.textContent = "We'll send you a reminder before the day. If your plans change, use the link in your email to cancel so we can offer the spot to someone else.";
+  }
+
+  successSecondary.style.display = 'block';
+  formWrap.style.display = 'none';
+  successPanel.style.display = 'block';
+  successPanel.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  if (submitting) return;
+
+  formStatus.textContent = '';
+  formStatus.className = 'form-status';
+
+  if (!form.checkValidity()){ form.reportValidity(); return; }
+
+  var data = collectFormData();
+  submitting = true;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting…';
+
+  var reset = function(){
+    submitting = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit';
+  };
+
+  if (!CONFIG.SCRIPT_URL){
+    // Design-review mode: no backend wired up yet.
+    setTimeout(function(){
+      var o = opportunities.filter(function(x){ return x.id === data.opportunityId; })[0];
+      var full = o && (o.spotsFilled >= o.volunteersNeeded);
+      saveContact();
+      showSuccess({
+        status: full ? 'Waitlisted' : 'Confirmed',
+        opportunityTitle: o ? o.title : 'General Interest List',
+        waitlistPosition: full ? (o.waitlistCount || 0) + 1 : 0
+      }, data);
+      reset();
+    }, 300);
+    return;
+  }
+
+  apiPost('signup', data)
+    .then(function(res){
+      reset();
+      if (res && res.ok){
+        saveContact();
+        showSuccess(res, data);
+        loadOpportunities();   // refresh counts for anyone still on the page
+      } else {
+        showError(esc((res && res.error) || 'Something went wrong. Please try again.'));
+      }
+    })
+    .catch(function(){
+      reset();
+      showError('We couldn\'t send that just now. Please try again, or email ' +
+        '<a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL + '</a> and we\'ll sign you up directly.');
+    });
+});
+
+oppSelect.addEventListener('change', updateSelectionNote);
+
+$('signUpAgain').addEventListener('click', function(){
+  successPanel.style.display = 'none';
+  formWrap.style.display = 'block';
+  oppSelect.value = GENERAL_ID;
+  updateSelectionNote();
+  loadOpportunities();
+  $('register').scrollIntoView({ behavior:'smooth', block:'start' });
+});
+
+/* ---------------------------------------------------------------
+   MANAGE VIEW  —  reached from the link in any confirmation email
+   --------------------------------------------------------------- */
+function getParam(name){
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function showManageView(token, intent){
+  mainView.style.display = 'none';
+  manageView.style.display = 'block';
+  $('heroTitle').textContent = 'Your Signup';
+  $('heroSub').textContent = 'Review your details, cancel, or switch to a different opportunity.';
+
+  if (!CONFIG.SCRIPT_URL){
+    manageBody.innerHTML = '<div class="panel warn"><h3>Not connected yet</h3>' +
+      '<p>This page is still running on sample data, so signup links can\'t be looked up. ' +
+      'Once the Google Sheet backend is connected, this is where students will manage their signup.</p></div>';
+    return;
+  }
+
+  apiGet({ action:'lookup', token:token })
+    .then(function(res){
+      if (!res.ok){ renderManageError(res.error); return; }
+      if (intent === 'claim' && res.signup.status === 'Offered'){
+        renderClaimPrompt(res.signup, token);
+      } else {
+        renderManage(res.signup, res.opportunities, token);
+      }
+    })
+    .catch(function(){
+      renderManageError('We couldn\'t load your signup just now. Please try the link again in a moment.');
+    });
+}
+
+function renderManageError(msg){
+  manageBody.innerHTML = '<div class="panel warn"><h3>We couldn\'t open that link</h3>' +
+    '<p>' + esc(msg) + '</p>' +
+    '<p>Email <a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL +
+    '</a> and we\'ll sort it out for you.</p>' +
+    '<div class="panel-actions"><a class="ghost-btn" href="' + location.pathname + '">See current opportunities</a></div></div>';
+}
+
+function statusLabel(s){
+  if (s === 'Confirmed') return 'Confirmed';
+  if (s === 'Waitlisted') return 'On the waitlist';
+  if (s === 'Offered') return 'Spot offered to you';
+  if (s === 'Cancelled') return 'Cancelled';
+  if (s === 'Expired') return 'Offer expired';
+  return s;
+}
+
+function renderClaimPrompt(signup, token){
+  var deadline = signup.offerExpires ? new Date(signup.offerExpires) : null;
+  var deadlineText = deadline
+    ? deadline.toLocaleDateString(undefined, { weekday:'long', month:'long', day:'numeric' }) +
+      ' at ' + deadline.toLocaleTimeString(undefined, { hour:'numeric', minute:'2-digit' })
+    : '';
+
+  manageBody.innerHTML =
+    '<div class="panel"><h3>A spot is being held for you</h3>' +
+    '<p>A place opened up for <strong>' + esc(signup.opportunityTitle) + '</strong> and you\'re next on the list.</p>' +
+    (deadlineText ? '<p>We\'re holding it until <strong>' + esc(deadlineText) +
+      '</strong>. After that it passes to the next person.</p>' : '') +
+    '<div class="panel-actions">' +
+      '<button type="button" class="submit-btn" id="claimBtn">Claim this spot</button>' +
+      '<button type="button" class="danger-btn" id="declineBtn">No longer available</button>' +
+    '</div>' +
+    '<div id="manageStatus" class="form-status" role="status" aria-live="polite"></div></div>';
+
+  $('claimBtn').addEventListener('click', function(){
+    runAction(this, 'claim', { token:token }, function(){
+      manageBody.innerHTML = '<div class="panel"><h3>Spot confirmed</h3>' +
+        '<p>You\'re all set for <strong>' + esc(signup.opportunityTitle) + '</strong>. ' +
+        'A confirmation email is on its way, and we\'ll send a reminder before the day.</p></div>';
+    });
+  });
+
+  $('declineBtn').addEventListener('click', function(){
+    if (!confirm('Release this spot so we can offer it to the next person?')) return;
+    runAction(this, 'cancel', { token:token }, function(){
+      manageBody.innerHTML = '<div class="panel warn"><h3>Spot released</h3>' +
+        '<p>Thanks for letting us know. The spot goes to the next person on the list.</p>' +
+        '<div class="panel-actions"><a class="ghost-btn" href="' + location.pathname + '">See other opportunities</a></div></div>';
+    });
+  });
+}
+
+function renderManage(signup, opps, token){
+  var inactive = (signup.status === 'Cancelled' || signup.status === 'Expired');
+
+  if (inactive){
+    manageBody.innerHTML = '<div class="panel warn"><h3>' + esc(statusLabel(signup.status)) + '</h3>' +
+      '<p>Your signup for <strong>' + esc(signup.opportunityTitle) + '</strong> is no longer active.</p>' +
+      '<p>You\'re welcome to sign up for anything that\'s currently open.</p>' +
+      '<div class="panel-actions"><a class="ghost-btn" href="' + location.pathname + '">See current opportunities</a></div></div>';
+    return;
+  }
+
+  var options = '<option value="">Choose a different opportunity…</option>';
+  (opps || []).forEach(function(o){
+    if (o.id === signup.opportunityId) return;
+    var remaining = Math.max(0, (o.volunteersNeeded || 0) - (o.spotsFilled || 0));
+    options += '<option value="' + esc(o.id) + '">' + esc(o.title) +
+      (remaining > 0 ? ' — ' + remaining + ' left' : ' — waitlist') + '</option>';
+  });
+  if (signup.opportunityId !== GENERAL_ID){
+    options += '<option value="' + GENERAL_ID + '">General interest list</option>';
+  }
+
+  manageBody.innerHTML =
+    '<div class="status-strip">' +
+      '<div><b>Student</b><span>' + esc(signup.studentName) + '</span></div>' +
+      '<div><b>Signed up for</b><span>' + esc(signup.opportunityTitle) + '</span></div>' +
+      '<div><b>Status</b><span>' + esc(statusLabel(signup.status)) +
+        (signup.waitlistPosition ? ' (position ' + signup.waitlistPosition + ')' : '') + '</span></div>' +
+    '</div>' +
+    '<div class="panel">' +
+      '<h3>Switch to something else</h3>' +
+      '<p>Moving your signup frees up your current spot for the next person on that waitlist.</p>' +
+      '<div class="field"><label for="changeSelect">New opportunity</label>' +
+      '<select id="changeSelect">' + options + '</select></div>' +
+      '<div class="panel-actions">' +
+        '<button type="button" class="submit-btn" id="changeBtn">Move my signup</button>' +
+      '</div>' +
+      '<div id="manageStatus" class="form-status" role="status" aria-live="polite"></div>' +
+    '</div>' +
+    '<div class="panel warn" style="margin-top:16px;">' +
+      '<h3>Cancel this signup</h3>' +
+      '<p>If you can no longer make it, cancelling right away lets us offer your spot to someone else in time.</p>' +
+      '<div class="panel-actions">' +
+        '<button type="button" class="danger-btn" id="cancelBtn">Cancel my signup</button>' +
+      '</div>' +
+    '</div>';
+
+  $('changeBtn').addEventListener('click', function(){
+    var newId = $('changeSelect').value;
+    if (!newId){ setManageStatus('Choose an opportunity first.', true); return; }
+    runAction(this, 'change', { token:token, newOpportunityId:newId }, function(res){
+      manageBody.innerHTML = '<div class="panel"><h3>Signup updated</h3>' +
+        '<p>You\'ve been moved to <strong>' + esc(res.opportunityTitle) + '</strong>' +
+        (res.status === 'Waitlisted'
+          ? ', which is currently full, so you\'re on the waitlist at position ' + res.waitlistPosition + '.'
+          : ' and your spot is confirmed.') + '</p>' +
+        '<p>We\'ve emailed you a confirmation.</p></div>';
+    });
+  });
+
+  $('cancelBtn').addEventListener('click', function(){
+    if (!confirm('Cancel your signup for ' + signup.opportunityTitle + '?')) return;
+    runAction(this, 'cancel', { token:token }, function(){
+      manageBody.innerHTML = '<div class="panel warn"><h3>Cancellation confirmed</h3>' +
+        '<p>Your signup for <strong>' + esc(signup.opportunityTitle) + '</strong> has been cancelled, ' +
+        'and your spot has gone back into the pool for the next person.</p>' +
+        '<p>Thanks for letting us know. You\'re welcome to sign up again any time.</p>' +
+        '<div class="panel-actions"><a class="ghost-btn" href="' + location.pathname + '">See current opportunities</a></div></div>';
+    });
+  });
+}
+
+function setManageStatus(msg, isError){
+  var el = $('manageStatus');
+  if (!el) return;
+  el.innerHTML = msg;
+  el.className = 'form-status' + (isError ? ' error' : '');
+}
+
+/** Shared button-guard so no action can be double-fired. */
+function runAction(btn, action, payload, onSuccess){
+  var label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Working…';
+  setManageStatus('');
+
+  apiPost(action, payload)
+    .then(function(res){
+      if (res && res.ok){ onSuccess(res); }
+      else {
+        btn.disabled = false;
+        btn.textContent = label;
+        setManageStatus(esc((res && res.error) || 'Something went wrong. Please try again.'), true);
+      }
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.textContent = label;
+      setManageStatus('We couldn\'t reach the server. Please try again, or email ' +
+        '<a href="mailto:' + CONFIG.CONTACT_EMAIL + '">' + CONFIG.CONTACT_EMAIL + '</a>.', true);
+    });
+}
+
+/* ---------------------------------------------------------------
+   Boot
+   --------------------------------------------------------------- */
+var token = getParam('token');
+if (token){
+  showManageView(token, getParam('intent'));
+} else {
+  prefillContact();
+  loadOpportunities();
+  updateSelectionNote();
+}
+
+})();
+</script>
+
+</body>
+</html>
