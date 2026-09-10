@@ -69,7 +69,7 @@
   .opp-status{ font-family:'League Spartan', sans-serif; font-weight:800; font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--purple-700); }
   .opp-status.is-filled{ color:#8a7a97; }
   .opp-status .sub{ display:block; font-weight:600; font-size:11px; letter-spacing:.04em; text-transform:none; color:#8a7a97; margin-top:3px; }
-  .opp-signup-btn{ display:inline-flex; align-items:center; gap:6px; background:var(--purple-700); color:var(--white); border:none; font-family:'League Spartan', sans-serif; font-weight:800; font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; padding:11px 20px; cursor:pointer; transition:opacity .15s; }
+  .opp-signup-btn{ display:inline-flex; align-items:center; justify-content:center; gap:6px; background:var(--purple-700); color:var(--white); border:none; font-family:'League Spartan', sans-serif; font-weight:800; font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; padding:13px 22px; min-height:44px; cursor:pointer; transition:opacity .15s; }
   .opp-signup-btn:hover{ opacity:.85; }
   .opp-signup-btn.is-filled{ background:#8a7a97; }
   .opp-signup-btn svg{ width:12px; height:12px; }
@@ -84,18 +84,23 @@
   .field label{ display:block; font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; color:var(--ink-900); margin-bottom:6px; }
   .field .req{ color:var(--purple-700); }
   .field .hint{ font-size:12px; color:#8a7a97; margin-top:5px; }
+  /* 16px is deliberate: iOS Safari zooms the page in when a focused input
+     is under 16px, which forces the student to pinch back out. 44px min
+     height meets the standard minimum touch target. */
   input[type=text], input[type=email], input[type=tel], input[type=number], select, textarea{
-    width:100%; font-family:'Inter', sans-serif; font-size:14px; color:var(--ink-900);
+    width:100%; font-family:'Inter', sans-serif; font-size:16px; color:var(--ink-900);
     border:1px solid #D9CEE4; background:var(--white); padding:11px 12px; border-radius:3px;
+    min-height:44px;
   }
   input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible{ outline:2px solid var(--purple-500); outline-offset:2px; }
-  textarea{ resize:vertical; min-height:80px; font-family:'Inter', sans-serif; }
+  textarea{ resize:vertical; min-height:88px; font-family:'Inter', sans-serif; }
   fieldset{ border:none; padding:0; }
   fieldset legend{ font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; color:var(--ink-900); margin-bottom:8px; padding:0; }
-  .check-grid{ display:flex; flex-wrap:wrap; gap:10px 18px; }
-  .check-row{ display:flex; align-items:center; gap:8px; font-size:13.5px; color:#3d2e4d; }
-  .check-row input{ width:auto; accent-color:var(--purple-700); }
-  .radio-row{ display:flex; flex-wrap:wrap; gap:18px; }
+  .check-grid{ display:flex; flex-wrap:wrap; gap:2px 18px; }
+  /* The whole row is the tap target, not just the 18px box. */
+  .check-row{ display:flex; align-items:center; gap:9px; font-size:14.5px; color:#3d2e4d; min-height:44px; cursor:pointer; }
+  .check-row input{ width:18px; height:18px; min-height:0; flex-shrink:0; accent-color:var(--purple-700); cursor:pointer; }
+  .radio-row{ display:flex; flex-wrap:wrap; gap:0 20px; }
 
   .info-box{ background:#F6F1FA; border:1px solid #EFE8F4; padding:14px 16px; font-size:13px; line-height:1.6; color:#3d2e4d; margin:6px 0 18px; }
   .info-box b{ color:var(--ink-900); }
@@ -104,12 +109,12 @@
   .consent-box input{ width:auto; margin-top:3px; accent-color:var(--purple-700); }
   .consent-box label{ font-size:13.5px; line-height:1.6; color:#3d2e4d; font-family:'Inter', sans-serif; font-weight:400; }
 
-  .submit-btn{ display:inline-block; background:var(--purple-700); color:var(--white); border:none; font-family:'League Spartan', sans-serif; font-weight:800; font-size:14px; letter-spacing:.04em; text-transform:uppercase; padding:14px 30px; cursor:pointer; transition:opacity .15s; }
+  .submit-btn{ display:inline-block; background:var(--purple-700); color:var(--white); border:none; font-family:'League Spartan', sans-serif; font-weight:800; font-size:14px; letter-spacing:.04em; text-transform:uppercase; padding:15px 32px; min-height:48px; cursor:pointer; transition:opacity .15s; }
   .submit-btn:hover{ opacity:.88; }
   .submit-btn:disabled{ opacity:.55; cursor:not-allowed; }
-  .ghost-btn{ display:inline-block; background:none; color:var(--purple-700); border:1px solid #D9CEE4; font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; padding:12px 22px; cursor:pointer; transition:background .15s; }
+  .ghost-btn{ display:inline-block; background:none; color:var(--purple-700); border:1px solid #D9CEE4; font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; padding:14px 24px; min-height:46px; cursor:pointer; transition:background .15s; }
   .ghost-btn:hover{ background:#F6F1FA; }
-  .danger-btn{ display:inline-block; background:none; color:#a23b3b; border:1px solid #e0c2c2; font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; padding:12px 22px; cursor:pointer; transition:background .15s; }
+  .danger-btn{ display:inline-block; background:none; color:#a23b3b; border:1px solid #e0c2c2; font-family:'League Spartan', sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; padding:14px 24px; min-height:46px; cursor:pointer; transition:background .15s; }
   .danger-btn:hover{ background:#fbf3f3; }
 
   .form-status{ margin-top:14px; font-size:13.5px; line-height:1.6; }
@@ -144,8 +149,14 @@
     .opp-item{ padding:20px 18px 18px; }
     .section-block{ margin-bottom:34px; }
     .opp-footer{ flex-direction:column; align-items:flex-start; }
-    .opp-signup-btn{ width:100%; justify-content:center; }
-    .panel-actions button{ width:100%; }
+    .opp-signup-btn{ width:100%; }
+    /* Primary actions go full width so they sit under the thumb. */
+    .submit-btn, .ghost-btn, .danger-btn{ width:100%; text-align:center; }
+    .panel-actions{ flex-direction:column; }
+    .panel-actions button, .panel-actions a{ width:100%; text-align:center; }
+    .check-grid{ flex-direction:column; gap:0; }
+    .status-strip{ flex-direction:column; gap:14px; }
+    .topbar a{ padding:12px 4px; min-height:44px; }
   }
 </style>
 </head>
